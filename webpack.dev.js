@@ -23,7 +23,6 @@ module.exports = merge(common, {
                     {
                         loader: 'style-loader',
                         options: {
-                            hmr: true,
                             sourceMap: true
                         }
                     },
@@ -106,15 +105,18 @@ module.exports = merge(common, {
     plugins: [
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, 'src', 'pages', 'home', 'index.pug'),
-            filename: path.join('[name]', 'index.html')
+            filename: path.join('home', 'index.html'),
+            chunks: ['home']
         }),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, 'src', 'pages', 'form', 'index.pug'),
-            filename: path.join('[name]', 'index.html')
+            filename: path.join('form', 'index.html'),
+            chunks: ['form']
         }),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, 'src', 'pages', 'result', 'index.pug'),
-            filename: path.join('[name]', 'index.html')
+            filename: path.join('result', 'index.html'),
+            chunks: ['result']
         })
     ],
     devServer: {
