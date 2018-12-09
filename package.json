@@ -22,6 +22,7 @@
     "@babel/plugin-syntax-dynamic-import": "^7.0.0",
     "@babel/preset-env": "^7.1.6",
     "@babel/preset-react": "^7.0.0",
+    "@fortawesome/fontawesome-free": "^5.6.0",
     "aos": "^2.3.4",
     "autoprefixer": "^9.3.1",
     "babel-loader": "^8.0.4",
