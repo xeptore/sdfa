@@ -6,9 +6,17 @@ const path = require('path');
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+
+const minificationConfig = {
+    collapseWhitespace: true,
+    removeComments: true,
+    removeScriptTypeAttributes: true,
+    removeRedundantAttributes: true,
+    removeStyleLinkTypeAttributes: true,
+    useShortDoctype: true
+}
 
 module.exports = merge(common, {
     mode: 'production',
@@ -84,29 +92,41 @@ module.exports = merge(common, {
             }
         ]
     },
+    optimization: {
+        splitChunks: {
+            chunks: 'all'
+        }
+    },
     plugins: [
         new UglifyJsPlugin({
             extractComments: /^\**|@preserve|@liscence|@cc_on/i,
             sourceMap: false,
             parallel: 7
         }),
-        new CleanWebpackPlugin([ path.resolve(__dirname, 'dist') ], { verbose: true }),
+        new CleanWebpackPlugin([path.resolve(__dirname, 'dist')], {
+            verbose: true
+        }),
         new MiniCssExtractPlugin({
-            filename: path.join('style.[hash].css')
+            filename: path.join('[name]', 'style.[hash].css'),
+            chunkFilename: '[id].css'
         }),
         new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, 'src', 'index.pug'),
-            filename: path.join('index.html'),
-            minify: {
-                collapseWhitespace: true,
-                removeComments: true,
-                removeScriptTypeAttributes: true,
-                removeRedundantAttributes: true,
-                removeStyleLinkTypeAttributes: true,
-                useShortDoctype: true
-            },
-            inlineSource: '.(js|css)$',
+            inject: true,
+            template: path.resolve(__dirname, 'src', 'pages', 'home', 'index.pug'),
+            filename: path.join('home', 'index.html'),
+            chunks: ['home']
         }),
-        new HtmlWebpackInlineSourcePlugin()
+        new HtmlWebpackPlugin({
+            inject: true,
+            template: path.resolve(__dirname, 'src', 'pages', 'form', 'index.pug'),
+            filename: path.join('form', 'index.html'),
+            chunks: ['form']
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            template: path.resolve(__dirname, 'src', 'pages', 'result', 'index.pug'),
+            filename: path.join('result', 'index.html'),
+            chunks: ['result']
+        })
     ]
 });
