@@ -12,7 +12,7 @@ module.exports = {
     context: path.resolve(__dirname),
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: path.join('bundle.[chunkhash].[contentHash].js'),
+        filename: path.join('bundle.[hash].js'),
         hashDigestLength: 32,
     },
     module: {
@@ -38,7 +38,6 @@ module.exports = {
                     {
                         loader: 'css-loader',
                         options: {
-                            modules: true,
                             camelCase: true,
                             sourceMap: true
                         }
@@ -118,7 +117,6 @@ module.exports = {
     },
     devtool: 'source-map',
     plugins: [
-        new webpack.HotModuleReplacementPlugin(),
         new webpack.ProvidePlugin({
             $: 'jquery',
             jQuery: 'jquery',
@@ -131,7 +129,6 @@ module.exports = {
     ],
     devServer: {
         contentBase: './dist',
-        port: 8080,
-        hot: true
+        port: 8080
     }
 };
