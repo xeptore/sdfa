@@ -2,16 +2,16 @@
 
 const path = require('path');
 
-const webpack = require('webpack');
-
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-
 module.exports = {
-    entry: path.resolve(__dirname, 'src', 'app.js'),
+    entry: {
+        home: path.resolve(__dirname, 'src', 'pages', 'home', 'index.js'),
+        form: path.resolve(__dirname, 'src', 'pages', 'form', 'index.js'),
+        result: path.resolve(__dirname, 'src', 'pages', 'result', 'index.js')
+    },
     context: path.resolve(__dirname),
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: path.join('bundle.[hash].js'),
+        filename: path.join('[name]', 'bundle.[hash].js'),
         hashDigestLength: 32,
     },
     resolve: {
@@ -19,10 +19,5 @@ module.exports = {
             'node_modules'
         ]
     },
-    plugins: [
-        new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, 'src', 'index.pug'),
-            filename: path.join('index.html')
-        })
-    ]
+    plugins: []
 };
