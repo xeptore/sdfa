@@ -1,0 +1,11 @@
+// @import 'settings/pre.scss';
+@import '~bootstrap/scss/bootstrap.scss';
+@import 'parts/wrapper.scss';
+
+* {
+    border: 1px dashed whitesmoke;
+}
+
+html, body {
+    height: 100vh;
+}
