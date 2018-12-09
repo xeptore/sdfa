@@ -1,20 +1,11 @@
 'use strict';
 
+const merge = require('webpack-merge');
+const common = require('./webpack.common.js');
 const path = require('path');
 
-const webpack = require('webpack');
-
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-
-module.exports = {
+module.exports = merge(common, {
     mode: 'development',
-    entry: path.resolve(__dirname, 'src', 'app.js'),
-    context: path.resolve(__dirname),
-    output: {
-        path: path.resolve(__dirname, 'dist'),
-        filename: path.join('bundle.[hash].js'),
-        hashDigestLength: 32,
-    },
     module: {
         rules: [
             {
@@ -110,25 +101,10 @@ module.exports = {
             }
         ]
     },
-    resolve: {
-        modules: [
-            'node_modules'
-        ]
-    },
     devtool: 'source-map',
-    plugins: [
-        new webpack.ProvidePlugin({
-            $: 'jquery',
-            jQuery: 'jquery',
-            'window.jQuery': 'jquery'
-        }),
-        new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, 'src', 'index.pug'),
-            filename: path.join('index.html')
-        })
-    ],
+    plugins: [],
     devServer: {
         contentBase: './dist',
         port: 8080
     }
-};
+});

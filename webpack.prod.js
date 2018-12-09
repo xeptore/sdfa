@@ -1,7 +1,8 @@
 'use strict';
 
+const merge = require('webpack-merge');
+const common = require('./webpack.common.js');
 const path = require('path');
-const webpack = require('webpack');
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -9,14 +10,8 @@ const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
-module.exports = {
+module.exports = merge(common, {
     mode: 'production',
-    entry: path.resolve(__dirname, 'src', 'home', 'index.js'),
-    output: {
-        path: path.resolve(__dirname, 'dist'),
-        filename: path.join('bundle.[name].[chunkhash].[contentHash].js'),
-        hashDigestLength: 32
-    },
     module: {
         rules: [{
                 test: /\.js$/,
@@ -89,17 +84,7 @@ module.exports = {
             }
         ]
     },
-    resolve: {
-        modules: [
-            'node_modules'
-        ]
-    },
     plugins: [
-        new webpack.ProvidePlugin({
-            $: 'jquery',
-            jQuery: 'jquery',
-            'window.jQuery': 'jquery'
-        }),
         new UglifyJsPlugin({
             extractComments: /^\**|@preserve|@liscence|@cc_on/i,
             sourceMap: false,
@@ -107,8 +92,7 @@ module.exports = {
         }),
         new CleanWebpackPlugin([ path.resolve(__dirname, 'dist') ], { verbose: true }),
         new MiniCssExtractPlugin({
-            filename: path.join('style.[name].[chunkhash].[contentHash].css'),
-            chunkFilename: '[id].[hash].css'
+            filename: path.join('style.[hash].css')
         }),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, 'src', 'index.pug'),
@@ -125,4 +109,4 @@ module.exports = {
         }),
         new HtmlWebpackInlineSourcePlugin()
     ]
-};
+});
