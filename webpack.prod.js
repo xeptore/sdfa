@@ -59,6 +59,7 @@ module.exports = merge(common, {
                 loader: 'file-loader',
                 options: {
                     name: '[name].[ext]',
+                    publicPath: '../assets/fonts',
                     outputPath: 'assets/fonts'
                 }
             },
@@ -77,6 +78,7 @@ module.exports = merge(common, {
                     loader: 'file-loader',
                     options: {
                         name: '[name].[ext]',
+                        publicPath: '../assets/images',
                         outputPath: 'assets/images'
                     }
                 }, ]
