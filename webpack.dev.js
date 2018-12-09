@@ -3,6 +3,7 @@
 const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = merge(common, {
     mode: 'development',
@@ -102,7 +103,20 @@ module.exports = merge(common, {
         ]
     },
     devtool: 'source-map',
-    plugins: [],
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: path.resolve(__dirname, 'src', 'pages', 'home', 'index.pug'),
+            filename: path.join('[name]', 'index.html')
+        }),
+        new HtmlWebpackPlugin({
+            template: path.resolve(__dirname, 'src', 'pages', 'form', 'index.pug'),
+            filename: path.join('[name]', 'index.html')
+        }),
+        new HtmlWebpackPlugin({
+            template: path.resolve(__dirname, 'src', 'pages', 'result', 'index.pug'),
+            filename: path.join('[name]', 'index.html')
+        })
+    ],
     devServer: {
         contentBase: './dist',
         port: 8080
