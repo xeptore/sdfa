@@ -107,7 +107,8 @@ module.exports = merge(common, {
             verbose: true
         }),
         new MiniCssExtractPlugin({
-            filename: path.join('[name]', 'style.[hash].css')
+            filename: path.join('[name]', 'style.[hash].css'),
+            chunkFilename: '[id].css'
         }),
         new HtmlWebpackPlugin({
             inject: true,
