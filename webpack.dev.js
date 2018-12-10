@@ -121,8 +121,7 @@ module.exports = merge(common, {
             filename: path.join('result', 'index.html'),
             chunks: ['result']
         }),
-        new BundleAnalyzerPlugin(),
-        new WebpackVisualizerPlugin()
+        new BundleAnalyzerPlugin()
     ],
     devServer: {
         contentBase: './dist',
