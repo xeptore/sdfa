@@ -41,6 +41,14 @@ module.exports = merge(common, {
                         }
                     },
                     {
+                        loader: 'resolve-url-loader', 
+                        options: {
+                            sourceMap: true,
+                            keepQuery: true,
+                            debug: true
+                        }
+                    },
+                    {
                         loader: 'sass-loader',
                         options: {
                             sourceComments: true,
@@ -121,7 +129,9 @@ module.exports = merge(common, {
             filename: path.join('result', 'index.html'),
             chunks: ['result']
         }),
-        new BundleAnalyzerPlugin()
+        new BundleAnalyzerPlugin({
+            openAnalyzer: false
+        })
     ],
     devServer: {
         contentBase: './dist',
