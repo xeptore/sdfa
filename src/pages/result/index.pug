@@ -2,16 +2,23 @@
     div(dir="rtl").col-10.wrapper.d-flex.flex-column.align-items-center.justify-content-around
         .result-container.d-flex.flex-column.align-items-center.text-center
             .status-icon-wrapper
-                i.icon-accept accept
-                i.icon-reject reject
+                i.fas.fa-check-circle.icon-accept.fa-10x
+                i.fas.fa-times-circle.icon-reject.fa-10x
             .status-text-container
                 p !رشته پذیرش شد
 
         .navigation-buttons-container.d-flex.justify-content-around
-            .home-button-container
-                button.home-button صفحه اول
-                
             .back-button-container
-                button.back-button صفحه قبل
+                button.back-button
+                    .
+                        صفحه قبل
+                    i.fas.fa-chevron-left.fa-3x
+                
+            .home-button-container
+                button.home-button
+                    .
+                        صفحه اول
+                    i.fas.fa-home.fa-3x
+
                 
     .bread-crumb-wrapper.col-2
