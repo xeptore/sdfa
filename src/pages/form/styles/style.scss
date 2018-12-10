@@ -1,1 +1,19 @@
 @import '../../../shared/styles/styles.scss';
+
+.submit-button-wrapper, .input-label {
+    font-family: 'BRoya';
+    font-size: x-large;
+}
+
+.text-input {
+    font-family: 'Slabo 27px';
+    font-size: x-large;
+    border-radius: 10px;
+    outline: none;
+
+    background-color: transparentize($color: lightgrey, $amount: 0.5);
+
+    &:focus {
+        background-color: transparent;
+    }
+}
