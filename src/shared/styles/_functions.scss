@@ -1,9 +1,7 @@
 @function text-stroke($width: 1px, $color: black, $blur: 0) {
-    $zipped: zip(
-        (-$width, $width, $width, -$width),
+    $zipped: zip((-$width, $width, $width, -$width),
         (-$width, $width, -$width, $width),
         ($blur, $blur, $blur, $blur),
-        ($color, $color, $color, $color)
-    );
+        ($color, $color, $color, $color));
     @return join((), $zipped, $separator: 'comma');
 }

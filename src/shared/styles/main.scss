@@ -1,0 +1,62 @@
+// settings
+@import '../../config/settings.scss';
+@import './fonts';
+@import './utils';
+@import './functions';
+@import './mixins';
+@import './buttons';
+
+
+// shared
+@import '../templates/breadcrumb/breadcrumb';
+
+// vendors
+@import '~bootstrap/scss/bootstrap.scss';
+$fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
+@import '~@fortawesome/fontawesome-free/scss/solid.scss';
+
+// development and debugging
+@import './dev';
+
+html,
+body {
+    height: 100vh;
+}
+
+body {
+    background-color: map-get($colors, background);
+}
+
+$margin-space: 5;
+$margin-spacer: map-get($spacers, $margin-space);
+
+.container-fluid {
+    height: calc(100% - #{2 * $margin-spacer});
+    width: auto;
+}
+
+.wrapper {
+    @extend .m-#{$margin-space};
+    border-radius: 2rem;
+    border: 6px dashed map-get($colors, main-wrapper-border-color);
+}
+
+.wrapper,
+.bread-crumb-section {
+    @include media-breakpoint-down(xl) {
+        width: 55%;
+    }
+
+    @include media-breakpoint-down(lg) {
+        width: 65%;
+    }
+
+    @include media-breakpoint-down(md) {
+        width: 75%;
+    }
+
+    @include media-breakpoint-down(sm) {
+        width: 85%;
+    }
+}
