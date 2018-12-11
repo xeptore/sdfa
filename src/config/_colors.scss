@@ -1,0 +1,18 @@
+$colors: (
+    reject: #FF0606,
+    success: #008D00,
+    background: #FFFFFF,
+    main-wrapper-border: #444444,
+    button: #264E70,
+    button-box-glow: #4A4A48,
+    input-border: lightgrey,
+    breadcrumb: (
+        background: #f05a28,
+        divider: whitesmoke,
+        text: white,
+        active: (
+            background: lighten(#DC9C85, 15%),
+            text: #535962
+        )
+    )
+);
