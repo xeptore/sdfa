@@ -122,19 +122,28 @@ module.exports = merge(common, {
             template: path.resolve(__dirname, 'src', 'pages', 'home', 'index.pug'),
             filename: path.join('home', 'index.html'),
             chunks: ['home'],
-            meta: TemplateMeta
+            meta: TemplateMeta,
+            templateParameters: {
+                PAGE: 'home'
+            }
         }),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, 'src', 'pages', 'form', 'index.pug'),
             filename: path.join('form', 'index.html'),
             chunks: ['form'],
-            meta: TemplateMeta
+            meta: TemplateMeta,
+            templateParameters: {
+                PAGE: 'form'
+            }
         }),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, 'src', 'pages', 'result', 'index.pug'),
             filename: path.join('result', 'index.html'),
             chunks: ['result'],
-            meta: TemplateMeta
+            meta: TemplateMeta,
+            templateParameters: {
+                PAGE: 'result'
+            }
         }),
         new BundleAnalyzerPlugin({
             openAnalyzer: false
