@@ -1,21 +1,20 @@
-.container-fluid.d-flex.flex-column.align-items-center
-    .col-10.wrapper.d-flex.flex-column.align-items-center.justify-content-around
-        .result-container.d-flex.flex-column.align-items-center.text-center
-            .status-icon-wrapper
-                i.fas.fa-check-circle.icon-accept.fa-10x
-                i.fas.fa-times-circle.icon-reject.fa-10x
-            .status-text-container.mt-4
-                p.status-text.color-success !رشته پذیرش شد
+extend ../../index
 
-        div(dir="rtl").navigation-buttons-container.d-flex.justify-content-around
-            .back-button-container.mx-2
-                button.navigation-button.back-button.d-flex.align-items-center.cursor-pointer.p-2
-                    span.button-title.mt-1 صفحه قبل
-                    i.fas.fa-chevron-left.mr-2
-                
-            .home-button-container.mx-2
-                button.navigation-button.home-button.d-flex.align-items-center.cursor-pointer.p-2
-                    span.button-title.mt-1 صفحه اول
-                    i.fas.fa-home.mr-2
-                
-    .bread-crumb-wrapper.col-2
+block content
+    div(dir="ltr").result-container.d-flex.flex-column.align-items-center.text-center
+        .status-icon-wrapper
+            i.fas.fa-check-circle.icon-accept.fa-10x
+            i.fas.fa-times-circle.icon-reject.fa-10x
+        .status-text-container.mt-4
+            p.status-text.color-success !رشته پذیرش شد
+
+    .navigation-buttons-container.d-flex.justify-content-around
+        .back-button-container.mx-2
+            button.button.back-button.d-flex.align-items-center.cursor-pointer
+                i.fas.fa-chevron-right.ml-2
+                span.button-title.mt-1 صفحه قبل
+
+        .home-button-container.mx-2
+            button.button.home-button.d-flex.align-items-center.cursor-pointer
+                i.fas.fa-home.ml-2
+                span.button-title.mt-1 صفحه اول
