@@ -11,6 +11,10 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const WebpackVisualizerPlugin = require('webpack-visualizer-plugin');
 
+const TemplateMeta = {
+    viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no'
+}
+
 const minificationConfig = {
     collapseWhitespace: true,
     removeComments: true,
@@ -46,8 +50,13 @@ module.exports = merge(common, {
                         options: {}
                     },
                     {
+                        loader: 'resolve-url-loader',
+                        options: {}
+                    },
+                    {
                         loader: 'sass-loader',
                         options: {
+                            sourceMap: true,
                             outputStyle: 'compressed',
                             includePaths: [
                                 './node_modules'
@@ -106,7 +115,7 @@ module.exports = merge(common, {
         new BundleAnalyzerPlugin({
             analyzerMode: 'static',
             openAnalyzer: true,
-            generateStatsFile: true,
+            generateStatsFile: true
         }),
         new UglifyJsPlugin({
             extractComments: /^\**|@preserve|@liscence|@cc_on/i,
@@ -124,19 +133,31 @@ module.exports = merge(common, {
             inject: true,
             template: path.resolve(__dirname, 'src', 'pages', 'home', 'index.pug'),
             filename: path.join('home', 'index.html'),
-            chunks: ['home']
+            chunks: ['home'],
+            meta: TemplateMeta,
+            templateParameters: {
+                PAGE: 'home'
+            }
         }),
         new HtmlWebpackPlugin({
             inject: true,
             template: path.resolve(__dirname, 'src', 'pages', 'form', 'index.pug'),
             filename: path.join('form', 'index.html'),
-            chunks: ['form']
+            chunks: ['form'],
+            meta: TemplateMeta,
+            templateParameters: {
+                PAGE: 'form'
+            }
         }),
         new HtmlWebpackPlugin({
             inject: true,
             template: path.resolve(__dirname, 'src', 'pages', 'result', 'index.pug'),
             filename: path.join('result', 'index.html'),
-            chunks: ['result']
+            chunks: ['result'],
+            meta: TemplateMeta,
+            templateParameters: {
+                PAGE: 'result'
+            }
         })
     ]
 });
