@@ -32,19 +32,19 @@
 }
 
 .navigation-button {
+    outline: none;
     border-radius: 7px;
-    background: linear-gradient(to bottom, lighten($button-color, 30%) 5%, $button-color 100%);
-    background-color: lighten($button-color, 20%);
+    background-color: $button-color;
     border: 2px solid lighten($button-color, 20%);
+    color: whitesmoke;
     font-family: 'BRoya';
+    font-size: 1.5rem;
 
     transition: background-color 150ms ease-out, border-color 150ms ease-out, color 100ms ease-in-out, box-shadow 150ms ease-in-out;
 
     &:hover {
-        @include box-glow($offset: 1px, $blur: 15px, $spread: 3px);
-        // background: linear-gradient(to bottom, $button-color 5%, lighten($button-color, 20%) 100%);
-        // background-color: #ffab23;
-        border-color: darken($button-color, 20%);
+        @include box-glow($offset: 1px, $blur: 10px, $spread: 1px, $color: lighten($button-box-glow-color, 20%));
+        border-color: $button-color;
         color: whitesmoke;
     }
 
