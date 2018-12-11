@@ -10,7 +10,8 @@ $fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
 
 @import './dev';
 
-html, body {
+html,
+body {
     height: 100vh;
 }
 
@@ -30,7 +31,10 @@ $margin-spacer: map-get($spacers, $margin-space);
     @extend .m-#{$margin-space};
     border-radius: 2rem;
     border: 6px dashed $main-wrapper-border-color;
-    
+}
+
+.wrapper,
+.bread-crumb-section {
     @include media-breakpoint-down(xl) {
         width: 55%;
     }
