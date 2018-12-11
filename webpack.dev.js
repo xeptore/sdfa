@@ -4,6 +4,11 @@ const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
+const TemplateMeta = {
+    viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no'
+}
 
 module.exports = merge(common, {
     mode: 'development',
@@ -40,6 +45,14 @@ module.exports = merge(common, {
                         }
                     },
                     {
+                        loader: 'resolve-url-loader', 
+                        options: {
+                            sourceMap: true,
+                            keepQuery: true,
+                            debug: true
+                        }
+                    },
+                    {
                         loader: 'sass-loader',
                         options: {
                             sourceComments: true,
@@ -60,6 +73,7 @@ module.exports = merge(common, {
                         loader: 'file-loader',
                         options: {
                             name: '[name].[ext]',
+                            publicPath: '../assets/fonts',
                             outputPath: 'assets/fonts'
                         }
                     },
@@ -83,6 +97,7 @@ module.exports = merge(common, {
                         loader: 'file-loader',
                         options: {
                             name: '[name].[ext]',
+                            publicPath: '../assets/images',
                             outputPath: 'assets/images'
                         }
                     },
@@ -106,17 +121,23 @@ module.exports = merge(common, {
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, 'src', 'pages', 'home', 'index.pug'),
             filename: path.join('home', 'index.html'),
-            chunks: ['home']
+            chunks: ['home'],
+            meta: TemplateMeta
         }),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, 'src', 'pages', 'form', 'index.pug'),
             filename: path.join('form', 'index.html'),
-            chunks: ['form']
+            chunks: ['form'],
+            meta: TemplateMeta
         }),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, 'src', 'pages', 'result', 'index.pug'),
             filename: path.join('result', 'index.html'),
-            chunks: ['result']
+            chunks: ['result'],
+            meta: TemplateMeta
+        }),
+        new BundleAnalyzerPlugin({
+            openAnalyzer: false
         })
     ],
     devServer: {

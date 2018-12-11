@@ -1,1 +1,22 @@
 @import '../../../shared/styles/styles.scss';
+
+.submit-button-wrapper,
+.input-label {
+    font-family: 'BRoya';
+    font-size: x-large;
+}
+
+.text-input {
+    font-family: 'Slabo 27px';
+    font-size: x-large;
+    border-radius: 10px;
+    outline: none;
+
+    background-color: transparentize($color: $input-border-color, $amount: 0.5);
+
+    border: 2px solid $input-border-color;
+
+    &:focus {
+        background-color: transparent;
+    }
+}

@@ -1,0 +1,7 @@
+@mixin box-glow($offset: 1px, $blur: 1px, $spread: 0px, $color: grey) {
+    box-shadow:
+        $offset 0 $blur $spread $color,
+        0 $offset $blur $spread $color,
+        -$offset 0 $blur $spread $color,
+        0 (-$offset) $blur $spread $color;
+}
