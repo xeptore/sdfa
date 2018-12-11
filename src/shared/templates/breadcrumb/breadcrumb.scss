@@ -1,0 +1,30 @@
+$bc-colors: map-get($colors, breadcrumb);
+
+.bc-item {
+    @extend .user-unselectable;
+    background-color: map-get(map-get($bc-colors, active), background);
+    color: map-get(map-get($bc-colors, active), text);
+
+
+    &:first-child {
+        border-radius:  0 $breadcrumb-container-radius $breadcrumb-container-radius 0;
+    }
+
+    &:last-child {
+        border-radius:  $breadcrumb-container-radius 0 0 $breadcrumb-container-radius;
+    }
+
+    &.active {
+        background-color: map-get($bc-colors, background);
+        color: map-get($bc-colors, text);
+
+        & .bc-text {
+            font-weight: bold;
+        }
+    }
+}
+
+.bc-text {
+    font-family: 'BRoya';
+    font-size: $breadcrumb-font-size;
+}

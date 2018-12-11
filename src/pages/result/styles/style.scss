@@ -1,55 +1,32 @@
-@import '../../../shared/styles/styles.scss';
+@import '../../../shared/styles/main.scss';
 
 @mixin status-text-stroke($color) {
-    color: darken($color, 5%);
-    text-shadow: text-stroke($width: 2px, $color: transparentize(lighten($color, 20%), 0.6), $blur: 2px);
+    color: darken($color, 7%);
+    text-shadow: text-stroke($width: 1px, $color: transparentize(lighten($color, 20%), 0.6), $blur: 2px);
 }
 
 .icon-accept,
 .color-success {
-    color: $success-color;
-    text-shadow: text-stroke($width: 3px, $color: transparentize(lighten($success-color, 15%), 0.6), $blur: 30px);
+    color: map-get($colors, success);
+    text-shadow: text-stroke($width: 2px, $color: transparentize(lighten(map-get($colors, success), 15%), 0.6), $blur: 18px);
 }
 
 .icon-reject,
 .color-reject {
-    color: $reject-color;
-    text-shadow: text-stroke($width: 3px, $color: transparentize(lighten($reject-color, 15%), 0.6), $blur: 30px);
+    color: map-get($colors, reject);
+    text-shadow: text-stroke($width: 2px, $color: transparentize(lighten(map-get($colors, reject), 15%), 0.6), $blur: 18px);
 }
 
 .color-reject {
-    @include status-text-stroke($reject-color);
+    @include status-text-stroke(map-get($colors, reject));
 }
 
 .color-success {
-    @include status-text-stroke($success-color);
+    @include status-text-stroke(map-get($colors, success));
 }
 
 .status-text {
     font-family: 'BRoya';
     font-weight: bolder;
     font-size: x-large;
-}
-
-.navigation-button {
-    border-radius: 7px;
-    background: linear-gradient(to bottom, lighten($button-color, 30%) 5%, $button-color 100%);
-    background-color: lighten($button-color, 20%);
-    border: 2px solid lighten($button-color, 20%);
-    font-family: 'BRoya';
-
-    transition: background-color 150ms ease-out, border-color 150ms ease-out, color 100ms ease-in-out, box-shadow 150ms ease-in-out;
-
-    &:hover {
-        @include box-glow($offset: 1px, $blur: 15px, $spread: 3px);
-        // background: linear-gradient(to bottom, $button-color 5%, lighten($button-color, 20%) 100%);
-        // background-color: #ffab23;
-        border-color: darken($button-color, 20%);
-        color: whitesmoke;
-    }
-
-    &:active {
-        position: relative;
-        top: 1px;
-    }
 }

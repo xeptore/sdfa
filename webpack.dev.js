@@ -13,8 +13,7 @@ const TemplateMeta = {
 module.exports = merge(common, {
     mode: 'development',
     module: {
-        rules: [
-            {
+        rules: [{
                 test: /\.js$/,
                 include: path.resolve(__dirname, 'src'),
                 loader: 'babel-loader'
@@ -24,8 +23,7 @@ module.exports = merge(common, {
                 include: [
                     path.resolve(__dirname, 'src')
                 ],
-                use: [
-                    {
+                use: [{
                         loader: 'style-loader',
                         options: {
                             sourceMap: true
@@ -45,7 +43,7 @@ module.exports = merge(common, {
                         }
                     },
                     {
-                        loader: 'resolve-url-loader', 
+                        loader: 'resolve-url-loader',
                         options: {
                             sourceMap: true,
                             keepQuery: true,
@@ -68,51 +66,35 @@ module.exports = merge(common, {
             },
             {
                 test: /\.(woff|woff2|eot|ttf)$/,
-                use: [
-                    {
-                        loader: 'file-loader',
-                        options: {
-                            name: '[name].[ext]',
-                            publicPath: '../assets/fonts',
-                            outputPath: 'assets/fonts'
-                        }
-                    },
-                ]
+                loader: 'file-loader',
+                options: {
+                    name: '[name].[ext]',
+                    publicPath: '../assets/fonts',
+                    outputPath: 'assets/fonts'
+                }
             },
             {
                 test: /\.(html)$/,
-                use: [
-                    {
-                        loader: 'html-loader',
-                        options: {
-                            attrs: [':data-image-src', 'img:src', 'a:href']
-                        }
-                    }
-                ]
+                loader: 'html-loader',
+                options: {
+                    attrs: [':data-image-src', 'img:src', 'a:href']
+                }
             },
             {
                 test: /\.(jpe?g|png|svg)/,
-                use: [
-                    {
-                        loader: 'file-loader',
-                        options: {
-                            name: '[name].[ext]',
-                            publicPath: '../assets/images',
-                            outputPath: 'assets/images'
-                        }
-                    },
-                ]
+                loader: 'file-loader',
+                options: {
+                    name: '[name].[ext]',
+                    publicPath: '../assets/images',
+                    outputPath: 'assets/images'
+                }
             },
             {
                 test: /\.(pug)/,
-                use: [
-                    {
-                        loader: 'pug-loader',
-                        options: {
-                            pretty: true
-                        }
-                    }
-                ]
+                loader: 'pug-loader',
+                options: {
+                    pretty: true
+                }
             }
         ]
     },
@@ -122,19 +104,28 @@ module.exports = merge(common, {
             template: path.resolve(__dirname, 'src', 'pages', 'home', 'index.pug'),
             filename: path.join('home', 'index.html'),
             chunks: ['home'],
-            meta: TemplateMeta
+            meta: TemplateMeta,
+            templateParameters: {
+                PAGE: 'home'
+            }
         }),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, 'src', 'pages', 'form', 'index.pug'),
             filename: path.join('form', 'index.html'),
             chunks: ['form'],
-            meta: TemplateMeta
+            meta: TemplateMeta,
+            templateParameters: {
+                PAGE: 'form'
+            }
         }),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, 'src', 'pages', 'result', 'index.pug'),
             filename: path.join('result', 'index.html'),
             chunks: ['result'],
-            meta: TemplateMeta
+            meta: TemplateMeta,
+            templateParameters: {
+                PAGE: 'result'
+            }
         }),
         new BundleAnalyzerPlugin({
             openAnalyzer: false

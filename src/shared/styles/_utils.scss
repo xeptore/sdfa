@@ -1,3 +1,7 @@
 .cursor-pointer {
     cursor: pointer;
 }
+
+.user-unselectable {
+    user-select: none;
+}

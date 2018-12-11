@@ -1,4 +1,4 @@
-@import '../../../shared/styles/styles.scss';
+@import '../../../shared/styles/main.scss';
 
 .submit-button-wrapper,
 .input-label {
@@ -9,14 +9,16 @@
 .text-input {
     font-family: 'Slabo 27px';
     font-size: x-large;
-    border-radius: 10px;
+    border-radius: $text-input-border-radius;
     outline: none;
+    background-color: transparentize($color: map-get($colors, input-border), $amount: 0.5);
 
-    background-color: transparentize($color: $input-border-color, $amount: 0.5);
+    transition: background-color 50ms ease-in, border-color 100ms ease-in-out;
 
-    border: 2px solid $input-border-color;
+    border: 2px solid map-get($colors, input-border);
 
     &:focus {
+        border-color: darken(map-get($colors, input-border), 40%);
         background-color: transparent;
     }
 }
