@@ -8,6 +8,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const WebpackVisualizerPlugin = require('webpack-visualizer-plugin');
 
 const minificationConfig = {
     collapseWhitespace: true,
@@ -59,6 +61,7 @@ module.exports = merge(common, {
                 loader: 'file-loader',
                 options: {
                     name: '[name].[ext]',
+                    publicPath: '../assets/fonts',
                     outputPath: 'assets/fonts'
                 }
             },
@@ -77,6 +80,7 @@ module.exports = merge(common, {
                     loader: 'file-loader',
                     options: {
                         name: '[name].[ext]',
+                        publicPath: '../assets/images',
                         outputPath: 'assets/images'
                     }
                 }, ]
@@ -98,6 +102,12 @@ module.exports = merge(common, {
         }
     },
     plugins: [
+        new WebpackVisualizerPlugin(),
+        new BundleAnalyzerPlugin({
+            analyzerMode: 'static',
+            openAnalyzer: true,
+            generateStatsFile: true,
+        }),
         new UglifyJsPlugin({
             extractComments: /^\**|@preserve|@liscence|@cc_on/i,
             sourceMap: false,
