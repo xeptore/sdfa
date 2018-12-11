@@ -1,14 +1,13 @@
 .container-fluid.d-flex.flex-column.align-items-center
     div(dir="rtl").col-10.wrapper.d-flex.flex-column.align-items-center.justify-content-around
-        form(action="result", method="post").d-flex.flex-column.align-items-center
-            .input-form.d-flex.flex-column.align-items-center
-                label(for="input").input-label.text-center رشته‌:
+        form(action="result", method="post").h-100.d-flex.flex-column.align-items-center.justify-content-around
+            .input-form.row.justify-content-center.align-items-center.mt-7
+                label(for="input").input-label.text-center.ml-md-3.ml-lg-4.my-0 رشته‌:
                 .w-100.d-md-none
-                input(type="text" dir="ltr" id="input").text-input.p-1.px-2
+                input(type="text" dir="ltr" id="input" autocomplete="off").text-input.p-1.px-2.col-8
             .submit-button-wrapper.mt-5
                 button(type="submit").d-flex.align-items-center.cursor-pointer
-                    i.fas.fa-chevron-right.fa-2x.ml-3
-                    .
-                        بررسی
+                    i.fas.fa-chevron-right.ml-3
+                    span.buttoon-title بررسی
 
     .bread-crumb-wrapper.col-2
