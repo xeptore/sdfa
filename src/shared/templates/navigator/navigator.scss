@@ -1,0 +1,48 @@
+$navigator-colors: map-get($colors, about-navigator);
+
+.navigator-container {
+    position: fixed;
+    right: -62px;
+    bottom: 100px;
+
+    transition: right 300ms ease-out;
+
+    &:hover {
+        right: 0;
+    }
+
+    .navigator-icon-container {
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+        background-color: map-get($navigator-colors, background);
+    
+        .navigator-link {
+            font-family: 'BRoya';
+            text-decoration: none;
+            color: map-get($navigator-colors, icon);
+            font-size: 1.5rem;
+    
+            &:hover {
+                text-decoration: none;
+
+                &>.navigator-text {
+                    opacity: 1;
+                }
+
+                &>.navigator-icon {
+                    color: darken(map-get($navigator-colors, icon), 30%);
+                }
+            }
+            
+            .navigator-text {
+                transition: opacity 200ms ease-in-out;
+                opacity: 0;
+            }
+
+            >.navigator-icon {
+                transition: color 100ms ease-in-out;
+                vertical-align: sub;
+            }
+        }
+    }
+}
