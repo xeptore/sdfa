@@ -2,38 +2,54 @@ $navigator-colors: map-get($colors, about-navigator);
 
 .navigator-container {
     position: fixed;
-    right: -62px;
+    right: -75px;
     bottom: 100px;
-
-    transition: right 300ms ease-out;
+    padding-left: 0;
 
     &:hover {
-        right: 0;
+        padding-left: 30px;
+
+        animation: {
+            name: reveal;
+            duration: 700ms;
+            timing-function: ease-out;
+            fill-mode: forwards;
+        }
+
+        &>.navigator-icon-container>.navigator-link {
+            &>.navigator-text {
+                opacity: 1;
+            }
+
+            &>.navigator-icon {
+                color: darken(map-get($navigator-colors, icon), 30%);
+            }
+        }
     }
 
     .navigator-icon-container {
         border-top-left-radius: 10px;
         border-bottom-left-radius: 10px;
         background-color: map-get($navigator-colors, background);
-    
+
         .navigator-link {
             font-family: 'BRoya';
             text-decoration: none;
             color: map-get($navigator-colors, icon);
             font-size: 1.5rem;
-    
-            &:hover {
-                text-decoration: none;
 
-                &>.navigator-text {
-                    opacity: 1;
-                }
+            // &:hover {
+            //     text-decoration: none;
 
-                &>.navigator-icon {
-                    color: darken(map-get($navigator-colors, icon), 30%);
-                }
-            }
-            
+            //     &>.navigator-text {
+            //         opacity: 1;
+            //     }
+
+            //     &>.navigator-icon {
+            //         color: darken(map-get($navigator-colors, icon), 30%);
+            //     }
+            // }
+
             .navigator-text {
                 transition: opacity 200ms ease-in-out;
                 opacity: 0;
@@ -44,5 +60,21 @@ $navigator-colors: map-get($colors, about-navigator);
                 vertical-align: sub;
             }
         }
+    }
+}
+
+@keyframes reveal {
+    0% {}
+
+    30% {
+        right: -90px;
+    }
+
+    70% {
+        right: 0px;
+    }
+
+    100% {
+        right: -20;
     }
 }
