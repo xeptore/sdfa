@@ -127,6 +127,15 @@ module.exports = merge(common, {
                 PAGE: 'result'
             }
         }),
+        new HtmlWebpackPlugin({
+            template: path.resolve(__dirname, 'src', 'pages', 'about', 'index.pug'),
+            filename: path.join('about', 'index.html'),
+            chunks: ['about'],
+            meta: TemplateMeta,
+            templateParameters: {
+                PAGE: 'about'
+            }
+        }),
         new BundleAnalyzerPlugin({
             openAnalyzer: false
         })

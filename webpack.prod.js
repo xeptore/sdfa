@@ -158,6 +158,16 @@ module.exports = merge(common, {
             templateParameters: {
                 PAGE: 'result'
             }
+        }),
+        new HtmlWebpackPlugin({
+            inject: true,
+            template: path.resolve(__dirname, 'src', 'pages', 'about', 'index.pug'),
+            filename: path.join('about', 'index.html'),
+            chunks: ['about'],
+            meta: TemplateMeta,
+            templateParameters: {
+                PAGE: 'about'
+            }
         })
     ]
 });

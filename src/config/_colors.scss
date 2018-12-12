@@ -6,7 +6,7 @@ $colors: (
     button: #264E70,
     button-box-glow: #4A4A48,
     input-border: lightgrey,
-    upload-background-logo: grey,
+    upload-background-logo: #4A4A48,
     breadcrumb: (
         background: #f05a28,
         divider: whitesmoke,
@@ -15,5 +15,9 @@ $colors: (
             background: lighten(#DC9C85, 15%),
             text: #535962
         )
+    ),
+    about-navigator: (
+        background: #015051,
+        icon: #F4F7ED
     )
 );
