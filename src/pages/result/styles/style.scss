@@ -1,4 +1,4 @@
-@import '../../../shared/styles/main.scss';
+@import '../../../shared/styles/main';
 
 @mixin status-text-stroke($color) {
     color: darken($color, 7%);
