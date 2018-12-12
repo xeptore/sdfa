@@ -7,8 +7,9 @@
 @import './buttons';
 
 
-// shared
+// shared templates
 @import '../templates/breadcrumb/breadcrumb';
+@import '../templates/navigator/navigator';
 
 // vendors
 @import '~bootstrap/scss/bootstrap.scss';
