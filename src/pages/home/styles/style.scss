@@ -18,8 +18,19 @@ button {
     z-index: -100;
 
     .dnd-upload-icon {
-        font-size: 20rem;
-        color: map-get($colors, upload-background-logo);
-        opacity: 0.4;
+        opacity: 0.2;
+
+
+        @include media-breakpoint-up(xs) {
+            font-size: 15rem;
+        }
+
+        @include media-breakpoint-up(sm) {
+            font-size: 20rem;
+        }
+
+        @include media-breakpoint-up(md) {
+            font-size: 20rem;
+        }
     }
 }
