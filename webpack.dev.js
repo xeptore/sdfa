@@ -87,10 +87,7 @@ module.exports = merge(common, {
             },
             {
                 test: /\.(html)$/,
-                loader: 'html-loader',
-                options: {
-                    attrs: [':data-image-src', 'img:src', 'a:href']
-                }
+                loader: 'html-loader'
             },
             {
                 test: /\.(jpe?g|png|svg)/,
@@ -134,15 +131,12 @@ module.exports = merge(common, {
             chunks: ['result'],
             meta: TemplateMeta
         }),
-        // new HtmlWebpackPlugin({
-        //     template: path.resolve(__dirname, 'src', 'pages', 'about', 'index.pug'),
-        //     filename: path.join('about', 'index.html'),
-        //     chunks: ['about'],
-        //     meta: TemplateMeta,
-        //     templateParameters: {
-        //         PAGE: 'about'
-        //     }
-        // }),
+        new HtmlWebpackPlugin({
+            template: path.resolve(__dirname, 'src', 'index.html'),
+            filename: path.join('about', 'index.html'),
+            chunks: ['about'],
+            meta: TemplateMeta
+        }),
         new BundleAnalyzerPlugin({
             openAnalyzer: false
         }),
