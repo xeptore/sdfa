@@ -7,10 +7,10 @@ const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const WriteFilePlugin = require('write-file-webpack-plugin');
 const {
     VueLoaderPlugin
 } = require('vue-loader');
-const WriteFilePlugin = require('write-file-webpack-plugin');
 
 
 const TemplateMeta = {
@@ -100,11 +100,7 @@ module.exports = merge(common, {
             },
             {
                 test: /\.pug$/,
-                use: [
-                    {
-                        loader: 'pug-plain-loader'
-                    }
-                ]
+                loader: 'pug-plain-loader'
             }
         ]
     },
