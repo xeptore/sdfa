@@ -6,7 +6,7 @@ module.exports = {
     entry: {
         // about: path.resolve(__dirname, 'src', 'pages', 'about', 'index.js'),
         home: path.resolve(__dirname, 'src', 'pages', 'home', 'index.js'),
-        // form: path.resolve(__dirname, 'src', 'pages', 'form', 'index.js'),
+        form: path.resolve(__dirname, 'src', 'pages', 'form', 'index.js'),
         // result: path.resolve(__dirname, 'src', 'pages', 'result', 'index.js')
     },
     context: path.resolve(__dirname),

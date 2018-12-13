@@ -120,20 +120,14 @@ module.exports = merge(common, {
             template: path.resolve(__dirname, 'src', 'index.html'),
             filename: path.join('home', 'index.html'),
             chunks: ['home'],
-            meta: TemplateMeta,
-            templateParameters: {
-                PAGE: 'home'
-            }
+            meta: TemplateMeta
         }),
-        // new HtmlWebpackPlugin({
-        //     template: path.resolve(__dirname, 'src', 'pages', 'form', 'index.pug'),
-        //     filename: path.join('form', 'index.html'),
-        //     chunks: ['form'],
-        //     meta: TemplateMeta,
-        //     templateParameters: {
-        //         PAGE: 'form'
-        //     }
-        // }),
+        new HtmlWebpackPlugin({
+            template: path.resolve(__dirname, 'src', 'index.html'),
+            filename: path.join('form', 'index.html'),
+            chunks: ['form'],
+            meta: TemplateMeta
+        }),
         // new HtmlWebpackPlugin({
         //     template: path.resolve(__dirname, 'src', 'pages', 'result', 'index.pug'),
         //     filename: path.join('result', 'index.html'),
