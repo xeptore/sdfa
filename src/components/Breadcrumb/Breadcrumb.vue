@@ -4,12 +4,12 @@
 export default {
     name: 'Breadcrumb',
     props: {
-        active: String
+        page: String
     }
 }
 </script>
 
 <style lang="scss" scoped>
-    @import '../../styles/main.scss';
+    @import '../_shared/styles/main.scss';
     @import './breadcrumb.scss';
 </style>
