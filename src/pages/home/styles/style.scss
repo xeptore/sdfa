@@ -32,5 +32,9 @@ button {
         @include media-breakpoint-up(md) {
             font-size: 20rem;
         }
+
+        @include media-breakpoint-up(xl) {
+            font-size: 25rem;
+        }
     }
 }

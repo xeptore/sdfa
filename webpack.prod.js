@@ -10,6 +10,9 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const WebpackVisualizerPlugin = require('webpack-visualizer-plugin');
+const {
+    VueLoaderPlugin
+} = require('vue-loader');
 
 const TemplateMeta = {
     viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no'
@@ -28,6 +31,10 @@ module.exports = merge(common, {
     mode: 'production',
     module: {
         rules: [{
+                test: /\.vue$/,
+                loader: 'vue-loader'
+            },
+            {
                 test: /\.js$/,
                 include: path.resolve(__dirname, 'src'),
                 use: 'babel-loader'
@@ -95,20 +102,11 @@ module.exports = merge(common, {
                 }, ]
             },
             {
-                test: /\.(pug)/,
-                use: [{
-                    loader: 'pug-loader',
-                    options: {
-                        pretty: false
-                    }
-                }]
+                test: /\.pug$/,
+                loader: 'pug-plain-loader'
+
             }
         ]
-    },
-    optimization: {
-        splitChunks: {
-            chunks: 'all'
-        }
     },
     plugins: [
         new WebpackVisualizerPlugin(),
@@ -129,45 +127,34 @@ module.exports = merge(common, {
             filename: path.join('[name]', 'style.[hash].css'),
             chunkFilename: '[id].css'
         }),
+        new VueLoaderPlugin(),
         new HtmlWebpackPlugin({
             inject: true,
-            template: path.resolve(__dirname, 'src', 'pages', 'home', 'index.pug'),
+            template: path.resolve(__dirname, 'src', 'index.html'),
             filename: path.join('home', 'index.html'),
             chunks: ['home'],
-            meta: TemplateMeta,
-            templateParameters: {
-                PAGE: 'home'
-            }
+            meta: TemplateMeta
         }),
         new HtmlWebpackPlugin({
             inject: true,
-            template: path.resolve(__dirname, 'src', 'pages', 'form', 'index.pug'),
+            template: path.resolve(__dirname, 'src', 'index.html'),
             filename: path.join('form', 'index.html'),
             chunks: ['form'],
-            meta: TemplateMeta,
-            templateParameters: {
-                PAGE: 'form'
-            }
+            meta: TemplateMeta
         }),
         new HtmlWebpackPlugin({
             inject: true,
-            template: path.resolve(__dirname, 'src', 'pages', 'result', 'index.pug'),
+            template: path.resolve(__dirname, 'src', 'index.html'),
             filename: path.join('result', 'index.html'),
             chunks: ['result'],
-            meta: TemplateMeta,
-            templateParameters: {
-                PAGE: 'result'
-            }
+            meta: TemplateMeta
         }),
         new HtmlWebpackPlugin({
             inject: true,
-            template: path.resolve(__dirname, 'src', 'pages', 'about', 'index.pug'),
+            template: path.resolve(__dirname, 'src', 'index.html'),
             filename: path.join('about', 'index.html'),
             chunks: ['about'],
-            meta: TemplateMeta,
-            templateParameters: {
-                PAGE: 'about'
-            }
+            meta: TemplateMeta
         })
     ]
 });
