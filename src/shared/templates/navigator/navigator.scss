@@ -11,7 +11,7 @@ $navigator-colors: map-get($colors, about-navigator);
 
         animation: {
             name: reveal;
-            duration: 700ms;
+            duration: 300ms;
             timing-function: ease-out;
             fill-mode: forwards;
         }
@@ -65,10 +65,6 @@ $navigator-colors: map-get($colors, about-navigator);
 
 @keyframes reveal {
     0% {}
-
-    30% {
-        right: -90px;
-    }
 
     70% {
         right: 0px;

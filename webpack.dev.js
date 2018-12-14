@@ -2,9 +2,16 @@
 
 const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
+const webpack = require('webpack');
 const path = require('path');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const WriteFilePlugin = require('write-file-webpack-plugin');
+const {
+    VueLoaderPlugin
+} = require('vue-loader');
+
 
 const TemplateMeta = {
     viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no'
@@ -14,6 +21,10 @@ module.exports = merge(common, {
     mode: 'development',
     module: {
         rules: [{
+                test: /\.vue$/,
+                loader: 'vue-loader'
+            },
+            {
                 test: /\.js$/,
                 include: path.resolve(__dirname, 'src'),
                 loader: 'babel-loader'
@@ -23,7 +34,8 @@ module.exports = merge(common, {
                 include: [
                     path.resolve(__dirname, 'src')
                 ],
-                use: [{
+                use: [
+                    {
                         loader: 'style-loader',
                         options: {
                             sourceMap: true
@@ -75,10 +87,7 @@ module.exports = merge(common, {
             },
             {
                 test: /\.(html)$/,
-                loader: 'html-loader',
-                options: {
-                    attrs: [':data-image-src', 'img:src', 'a:href']
-                }
+                loader: 'html-loader'
             },
             {
                 test: /\.(jpe?g|png|svg)/,
@@ -90,55 +99,44 @@ module.exports = merge(common, {
                 }
             },
             {
-                test: /\.(pug)/,
-                loader: 'pug-loader',
-                options: {
-                    pretty: true
-                }
+                test: /\.pug$/,
+                loader: 'pug-plain-loader'
             }
         ]
     },
     devtool: 'source-map',
     plugins: [
+        new CleanWebpackPlugin([path.resolve(__dirname, 'dist')]),
+        new webpack.HashedModuleIdsPlugin(),
+        new VueLoaderPlugin(),
         new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, 'src', 'pages', 'home', 'index.pug'),
+            template: path.resolve(__dirname, 'src', 'index.html'),
             filename: path.join('home', 'index.html'),
             chunks: ['home'],
-            meta: TemplateMeta,
-            templateParameters: {
-                PAGE: 'home'
-            }
+            meta: TemplateMeta
         }),
         new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, 'src', 'pages', 'form', 'index.pug'),
+            template: path.resolve(__dirname, 'src', 'index.html'),
             filename: path.join('form', 'index.html'),
             chunks: ['form'],
-            meta: TemplateMeta,
-            templateParameters: {
-                PAGE: 'form'
-            }
+            meta: TemplateMeta
         }),
         new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, 'src', 'pages', 'result', 'index.pug'),
+            template: path.resolve(__dirname, 'src', 'index.html'),
             filename: path.join('result', 'index.html'),
             chunks: ['result'],
-            meta: TemplateMeta,
-            templateParameters: {
-                PAGE: 'result'
-            }
+            meta: TemplateMeta
         }),
         new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, 'src', 'pages', 'about', 'index.pug'),
+            template: path.resolve(__dirname, 'src', 'index.html'),
             filename: path.join('about', 'index.html'),
             chunks: ['about'],
-            meta: TemplateMeta,
-            templateParameters: {
-                PAGE: 'about'
-            }
+            meta: TemplateMeta
         }),
         new BundleAnalyzerPlugin({
             openAnalyzer: false
-        })
+        }),
+        new WriteFilePlugin()
     ],
     devServer: {
         contentBase: './dist',
