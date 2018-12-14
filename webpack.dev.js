@@ -121,6 +121,9 @@ module.exports = merge(common, {
   ],
   devServer: {
     contentBase: './dist',
-    port: 8080
+    port: 8080,
+    historyApiFallback: {
+      index: 'index.html'
+    }
   }
 })
