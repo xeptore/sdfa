@@ -85,10 +85,6 @@ module.exports = merge(common, {
       }
     },
     {
-      test: /\.(html)$/,
-      loader: 'html-loader'
-    },
-    {
       test: /\.(jpe?g|png|svg)/,
       loader: 'file-loader',
       options: {
