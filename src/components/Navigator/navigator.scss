@@ -3,7 +3,7 @@ $navigator-colors: map-get($colors, about-navigator);
 .navigator-container {
     position: fixed;
     right: -75px;
-    bottom: 100px;
+    bottom: 150px;
     padding-left: 0;
 
     &:hover {
@@ -37,19 +37,6 @@ $navigator-colors: map-get($colors, about-navigator);
             text-decoration: none;
             color: map-get($navigator-colors, icon);
             font-size: 1.5rem;
-
-            // &:hover {
-            //     text-decoration: none;
-
-            //     &>.navigator-text {
-            //         opacity: 1;
-            //     }
-
-            //     &>.navigator-icon {
-            //         color: darken(map-get($navigator-colors, icon), 30%);
-            //     }
-            // }
-
             .navigator-text {
                 transition: opacity 200ms ease-in-out;
                 opacity: 0;
