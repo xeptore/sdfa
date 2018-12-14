@@ -1,15 +1,10 @@
 // settings
-@import '../../config/settings.scss';
+@import '../../../config/settings.scss';
 @import './fonts';
 @import './utils';
 @import './functions';
 @import './mixins';
 @import './buttons';
-
-
-// shared templates
-@import '../templates/breadcrumb/breadcrumb';
-@import '../templates/navigator/navigator';
 
 // vendors
 @import '~bootstrap/scss/bootstrap.scss';
