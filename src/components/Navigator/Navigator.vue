@@ -1,16 +1,7 @@
-<template lang="pug">
-div(dir="rtl").navigator-container.d-flex.justify-content-center.align-items-center
-    .navigator-icon-container.text-center
-        a(href="/about").navigator-link.p-2.d-inline-block
-            p.d-inline-block.m-0.mx-2.mr-4.navigator-text درباره
-            i.fas.fa-info-circle.navigator-icon.ml-1
+<template lang="pug" src="./navigator.pug">
 </template>
 
-<script>
-export default {
-    name: 'Navigator'
-}
-</script>
+<script src="./Navigator.js"></script>
 
 <style lang="scss" scoped>
     @import '../_shared/styles/main.scss';
