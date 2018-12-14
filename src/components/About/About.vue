@@ -1,14 +1,10 @@
 <template lang="pug">
-#about.container
-    include about
+div
+    Wrapper
+        include about
 </template>
 
-<script>
-
-export default {
-    name: 'About'
-}
-</script>
+<script src="./About.js"></script>
 
 <style lang="scss" scoped>
     @import '../_shared/styles/main.scss';
