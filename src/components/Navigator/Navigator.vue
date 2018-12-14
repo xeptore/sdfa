@@ -13,7 +13,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    @import '../../styles/main.scss';
+    @import '../_shared/styles/main.scss';
     @import './navigator.scss';
 </style>
 
