@@ -1,5 +1,3 @@
-@import '../../../shared/styles/main';
-
 @mixin status-text-stroke($color) {
     color: darken($color, 7%);
     text-shadow: text-stroke($width: 1px, $color: transparentize(lighten($color, 20%), 0.6), $blur: 2px);
