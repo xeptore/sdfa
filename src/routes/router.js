@@ -6,24 +6,25 @@ import Result from '../components/Result/Result.vue'
 import About from '../components/About/About.vue'
 
 export function Routes () {
-  return new VueRouter({
+  const router = new VueRouter({
     mode: 'history',
     routes: [
       {
-        path: '/', redirect: '/home'
+        path: '/', redirect: '/home', meta: { transition: 'slide' }
       },
       {
-        path: '/home', component: Home
+        path: '/home', component: Home, meta: { transition: 'slide' }
       },
       {
-        path: '/form', component: Form
+        path: '/form', component: Form, meta: { transition: 'slide' }
       },
       {
-        path: '/result', component: Result
+        path: '/result', component: Result, meta: { transition: 'slide' }
       },
       {
-        path: '/about', component: About
+        path: '/about', component: About, meta: { transition: 'fade' }
       }
     ]
   })
+  return router
 }

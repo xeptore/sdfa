@@ -5,6 +5,7 @@
 @import './functions';
 @import './mixins';
 @import './buttons';
+@import './transitions';
 
 // vendors
 @import '~bootstrap/scss/bootstrap.scss';
@@ -23,7 +24,7 @@ body {
 body {
     background-color: map-get($colors, background);
     max-height: 100vh;
-    overflow-y: hidden;
+    overflow: hidden;
 }
 
 $margin-space: 5;

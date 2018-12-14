@@ -4,6 +4,8 @@
         <router-link to="/form">form</router-link>
         <router-link to="/result">result</router-link>
         <router-link to="/about">about</router-link>
-        <router-view></router-view>
+        <transition :name="transition" mode="out-in">
+            <router-view></router-view>
+        </transition>
     </div>
 </body>

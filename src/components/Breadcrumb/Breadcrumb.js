@@ -1,6 +1,7 @@
 export default {
   name: 'Breadcrumb',
   props: {
-    page: String
+    page: String,
+    hidden: Boolean
   }
 }
