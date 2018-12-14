@@ -1,11 +1,20 @@
 <template lang="pug">
-#about
-    include about
+div
+    .container-fluid.d-flex.flex-column.align-items-center
+        div(dir="rtl").col-10.wrapper.d-flex.flex-column.align-items-center.justify-content-around
+            include about
+
+    <Navigator/>
 </template>
 
 <script>
-export default {
+import Navigator from '../../shared/templates/navigator/Navigator.vue';
 
+export default {
+    name: 'About',
+    components: {
+        Navigator
+    }
 }
 </script>
 
