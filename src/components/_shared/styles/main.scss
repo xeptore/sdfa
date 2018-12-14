@@ -22,13 +22,16 @@ body {
 
 body {
     background-color: map-get($colors, background);
+    max-height: 100vh;
+    overflow-y: hidden;
 }
 
 $margin-space: 5;
 $margin-spacer: map-get($spacers, $margin-space);
 
 .container-fluid {
-    height: calc(100% - #{2 * $margin-spacer});
+    $h: calc(100% - #{2 * $margin-spacer});
+    height: $h;
     width: auto;
 }
 
