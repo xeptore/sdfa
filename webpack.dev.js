@@ -111,26 +111,8 @@ module.exports = merge(common, {
         new VueLoaderPlugin(),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, 'src', 'index.html'),
-            filename: path.join('home', 'index.html'),
-            chunks: ['home'],
-            meta: TemplateMeta
-        }),
-        new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, 'src', 'index.html'),
-            filename: path.join('form', 'index.html'),
-            chunks: ['form'],
-            meta: TemplateMeta
-        }),
-        new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, 'src', 'index.html'),
-            filename: path.join('result', 'index.html'),
-            chunks: ['result'],
-            meta: TemplateMeta
-        }),
-        new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, 'src', 'index.html'),
-            filename: path.join('about', 'index.html'),
-            chunks: ['about'],
+            filename: path.join('main', 'index.html'),
+            chunks: ['main'],
             meta: TemplateMeta
         }),
         new BundleAnalyzerPlugin({
