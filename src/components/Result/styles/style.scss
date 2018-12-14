@@ -1,0 +1,30 @@
+@mixin status-text-stroke($color) {
+    color: darken($color, 7%);
+    text-shadow: text-stroke($width: 1px, $color: transparentize(lighten($color, 20%), 0.6), $blur: 2px);
+}
+
+.icon-accept,
+.color-success {
+    color: map-get($colors, success);
+    text-shadow: text-stroke($width: 2px, $color: transparentize(lighten(map-get($colors, success), 15%), 0.6), $blur: 18px);
+}
+
+.icon-reject,
+.color-reject {
+    color: map-get($colors, reject);
+    text-shadow: text-stroke($width: 2px, $color: transparentize(lighten(map-get($colors, reject), 15%), 0.6), $blur: 18px);
+}
+
+.color-reject {
+    @include status-text-stroke(map-get($colors, reject));
+}
+
+.color-success {
+    @include status-text-stroke(map-get($colors, success));
+}
+
+.status-text {
+    font-family: 'BRoya';
+    font-weight: bolder;
+    font-size: x-large;
+}

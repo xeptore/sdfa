@@ -1,0 +1,37 @@
+p.text {
+    font-family: 'BRoya';
+    font-size: x-large;
+}
+
+button {
+    font-family: 'BRoya';
+    font-size: x-large;
+}
+
+.dnd-upload-icon-wrapper {
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+
+    .dnd-upload-icon {
+        opacity: 0.2;
+
+
+        @include media-breakpoint-up(xs) {
+            font-size: 15rem;
+        }
+
+        @include media-breakpoint-up(sm) {
+            font-size: 20rem;
+        }
+
+        @include media-breakpoint-up(md) {
+            font-size: 20rem;
+        }
+
+        @include media-breakpoint-up(xl) {
+            font-size: 25rem;
+        }
+    }
+}

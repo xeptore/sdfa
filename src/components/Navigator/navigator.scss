@@ -1,0 +1,63 @@
+$navigator-colors: map-get($colors, about-navigator);
+
+.navigator-container {
+    position: fixed;
+    right: -75px;
+    bottom: 150px;
+    padding-left: 0;
+
+    &:hover {
+        padding-left: 30px;
+
+        animation: {
+            name: reveal;
+            duration: 300ms;
+            timing-function: ease-out;
+            fill-mode: forwards;
+        }
+
+        &>.navigator-icon-container>.navigator-link {
+            &>.navigator-text {
+                opacity: 1;
+            }
+
+            &>.navigator-icon {
+                color: darken(map-get($navigator-colors, icon), 30%);
+            }
+        }
+    }
+
+    .navigator-icon-container {
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+        background-color: map-get($navigator-colors, background);
+
+        .navigator-link {
+            font-family: 'BRoya';
+            text-decoration: none;
+            color: map-get($navigator-colors, icon);
+            font-size: 1.5rem;
+            .navigator-text {
+                transition: opacity 200ms ease-in-out;
+                opacity: 0;
+            }
+
+            >.navigator-icon {
+                transition: color 100ms ease-in-out;
+                vertical-align: sub;
+            }
+        }
+    }
+}
+
+@keyframes reveal {
+    0% {}
+
+    70% {
+        right: 0px;
+    }
+
+    100% {
+        right: -20;
+    }
+}
