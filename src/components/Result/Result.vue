@@ -1,12 +1,14 @@
 <template lang="pug">
-include result
+div
+    Wrapper
+        include result
+    
+    Breadcrumb(page="result")
+
+    Navigator
 </template>
 
-<script>
-export default {
-    name: 'Result'
-}
-</script>
+<script src="./Result.js"></script>
 
 <style lang="scss" scoped>
     @import '../_shared/styles/main.scss';

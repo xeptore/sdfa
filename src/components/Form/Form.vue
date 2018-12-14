@@ -1,12 +1,14 @@
 <template lang="pug">
-include form
+div
+    Wrapper
+        include form
+    
+    Breadcrumb(page="form")
+
+    Navigator
 </template>
 
-<script>
-export default {
-    name: 'Form'
-}
-</script>
+<script src="./Form.js"></script>
 
 <style lang="scss" scoped>
     @import '../_shared/styles/main.scss';

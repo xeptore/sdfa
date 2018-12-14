@@ -1,16 +1,14 @@
 <template lang="pug">
-include home
+div
+    Wrapper
+        include home
+    
+    Breadcrumb(page="home")
+
+    Navigator
 </template>
 
-<script>
-export default {
-    name: 'Home'
-}
-</script>
-
-<style lang="scss">
-</style>
-
+<script src="./Home.js"></script>
 
 <style lang="scss" scoped>
     @import '../_shared/styles/main.scss';
