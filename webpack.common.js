@@ -9,7 +9,7 @@ module.exports = {
     context: path.resolve(__dirname),
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: path.join('[name]', 'bundle.[contentHash].js'),
+        filename: path.join('bundle.[contentHash].js'),
         hashDigestLength: 32,
     },
     resolve: {

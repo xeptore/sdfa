@@ -111,7 +111,7 @@ module.exports = merge(common, {
         new VueLoaderPlugin(),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, 'src', 'index.html'),
-            filename: path.join('main', 'index.html'),
+            filename: path.join('index.html'),
             chunks: ['main'],
             meta: TemplateMeta
         }),
