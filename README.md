@@ -1,2 +1,2 @@
 # sadfa
-Ms. Sadeghpour DFA Educational Project
+Educational Purpose Project
