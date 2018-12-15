@@ -1,5 +1,6 @@
 let statesCount = 0
 let alphabets = []
+let endStates = []
 
 function first () {
   const f = '2 a b'
@@ -58,14 +59,15 @@ function nthPlus1 () {
   const l = '1 1'
   const parts = l.split(' ').filter(p => p.length !== 0).map(p => p.trim())
   const count = parts[0]
-  const endStates = parts.slice(1)
+  const ends = parts.slice(1)
   if (!isNaN(count)) {
-    if (endStates.length === count) {
-      for (const s in endStates) {
+    if (ends.length === count) {
+      for (const s in ends) {
         if (isNaN(s) || parseInt(s) < 0 || parseInt(s) >= statesCount) {
           return false
         }
       }
+      endStates = ends
       return true
     }
   }
