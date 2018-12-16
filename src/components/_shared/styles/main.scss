@@ -27,11 +27,10 @@ body {
     overflow: hidden;
 }
 
-$margin-space: 5;
-$margin-spacer: map-get($spacers, $margin-space);
+$margin-space: 3;
 
 .container-fluid {
-    $h: calc(100% - #{2 * $margin-spacer});
+    $h: calc(100% - #{3 * $margin-space}rem);
     height: $h;
     width: auto;
 }
