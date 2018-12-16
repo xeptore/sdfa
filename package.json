@@ -2,12 +2,13 @@
   "name": "sadeghpour",
   "version": "1.0.0",
   "description": "words acceptation check by dfa machines project",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "webpack --watch",
     "start": "webpack-dev-server --config=webpack.dev.js --open",
-    "build": "NODE_ENV=production webpack --config=webpack.prod.js --mode=production"
+    "app": "electron .",
+    "build": "NODE_ENV=production webpack --config=webpack.prod.js --mode=production && rm -rf *.LICENSE"
   },
   "repository": "git@github.com:xeptore/sadfa.git",
   "author": "xeptore",
