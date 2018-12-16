@@ -13,7 +13,8 @@ const {
 } = require('vue-loader')
 
 const TemplateMeta = {
-  viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no'
+  viewport: { 'viewport': 'width=device-width, initial-scale=1, shrink-to-fit=no' },
+  charset: { 'charset': 'UTF-8' }
 }
 
 module.exports = merge(common, {
