@@ -15,9 +15,11 @@ const {
 } = require('vue-loader')
 
 const TemplateMeta = {
-  viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no'
+  viewport: { 'viewport': 'width=device-width, initial-scale=1, shrink-to-fit=no' },
+  charset: { 'charset': 'UTF-8' }
 }
 
+// eslint-disable-next-line no-unused-vars
 const minificationConfig = {
   collapseWhitespace: true,
   removeComments: true,
@@ -29,6 +31,9 @@ const minificationConfig = {
 
 module.exports = merge(common, {
   mode: 'production',
+  output: {
+    filename: path.join('app.js')
+  },
   module: {
     rules: [{
       test: /\.vue$/,
@@ -77,7 +82,7 @@ module.exports = merge(common, {
       loader: 'file-loader',
       options: {
         name: '[name].[ext]',
-        publicPath: '../assets/fonts',
+        publicPath: 'assets/fonts',
         outputPath: 'assets/fonts'
       }
     },
@@ -87,7 +92,7 @@ module.exports = merge(common, {
         loader: 'file-loader',
         options: {
           name: '[name].[ext]',
-          publicPath: '../assets/images',
+          publicPath: 'assets/images',
           outputPath: 'assets/images'
         }
       } ]
@@ -104,7 +109,9 @@ module.exports = merge(common, {
     new BundleAnalyzerPlugin({
       analyzerMode: 'static',
       openAnalyzer: true,
-      generateStatsFile: true
+      generateStatsFile: true,
+      statsFilename: path.join('analyzer', 'stats.json'),
+      reportFilename: path.join('analyzer', 'report.html')
     }),
     new UglifyJsPlugin({
       extractComments: /^\**|@preserve|@liscence|@cc_on/i,
@@ -115,36 +122,14 @@ module.exports = merge(common, {
       verbose: true
     }),
     new MiniCssExtractPlugin({
-      filename: path.join('[name]', 'style.[hash].css'),
+      filename: path.join('style.css'),
       chunkFilename: '[id].css'
     }),
     new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
-      inject: true,
       template: path.resolve(__dirname, 'src', 'index.html'),
-      filename: path.join('home', 'index.html'),
-      chunks: ['home'],
-      meta: TemplateMeta
-    }),
-    new HtmlWebpackPlugin({
-      inject: true,
-      template: path.resolve(__dirname, 'src', 'index.html'),
-      filename: path.join('form', 'index.html'),
-      chunks: ['form'],
-      meta: TemplateMeta
-    }),
-    new HtmlWebpackPlugin({
-      inject: true,
-      template: path.resolve(__dirname, 'src', 'index.html'),
-      filename: path.join('result', 'index.html'),
-      chunks: ['result'],
-      meta: TemplateMeta
-    }),
-    new HtmlWebpackPlugin({
-      inject: true,
-      template: path.resolve(__dirname, 'src', 'index.html'),
-      filename: path.join('about', 'index.html'),
-      chunks: ['about'],
+      filename: path.join('index.html'),
+      chunks: ['main'],
       meta: TemplateMeta
     })
   ]
