@@ -2,6 +2,7 @@
     @extend .px-3;
     @extend .p-2;
     @extend .user-unselectable;
+    @extend .cursor-pointer;
 
     outline: none;
     border-radius: $buttons-border-radius;
@@ -31,4 +32,19 @@
         position: relative;
         top: 1px;
     }
+}
+
+.button-disabled {
+    @extend .px-3;
+    @extend .p-2;
+    @extend .user-unselectable;
+
+    outline: none;
+    border-radius: $buttons-border-radius;
+    background-color: desaturate(map-get($colors, button), 70%);
+    border: 2px solid desaturate(lighten(map-get($colors, button), 20%), 70%);
+    color: darken(desaturate(whitesmoke, 70%), 10%);
+    font-family: 'BRoya';
+    font-weight: bold;
+    font-size: 1.3rem;
 }
