@@ -108,7 +108,7 @@ module.exports = merge(common, {
     new WebpackVisualizerPlugin(),
     new BundleAnalyzerPlugin({
       analyzerMode: 'static',
-      openAnalyzer: true,
+      openAnalyzer: false,
       generateStatsFile: true,
       statsFilename: path.join('analyzer', 'stats.json'),
       reportFilename: path.join('analyzer', 'report.html')
@@ -132,5 +132,6 @@ module.exports = merge(common, {
       chunks: ['main'],
       meta: TemplateMeta
     })
-  ]
+  ],
+  target: 'electron-renderer'
 })

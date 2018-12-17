@@ -1,27 +1,25 @@
 const { app, BrowserWindow } = require('electron')
-const path = require('path')
-const express = require('express')
-const history = require('connect-history-api-fallback')
-const PORT = 6868
+const { default: installExtension, VUEJS_DEVTOOLS } = require('electron-devtools-installer')
 
 // preventing from collected by garbage collector
 let win
 
 function createWindow () {
   win = new BrowserWindow({ width: 900, height: 680, resizable: false })
-  const app = express()
-  app.use(express.static(path.join(__dirname, 'dist')))
-  app.use(history())
-  app.listen(PORT)
 
-  win.setMenu(null)
+  installExtension(VUEJS_DEVTOOLS)
+    .then(name => console.log(`Added Extension: ${name}`))
+    .catch(e => console.log(`An Error Occurred: ${e}`))
+
+  // win.setMenu(null)
   win.focus()
+  win.webContents.openDevTools()
 
   win.once('ready-to-show', () => {
     win.show()
   })
 
-  win.loadURL(`http://localhost:${PORT}`)
+  win.loadURL(`http://localhost:${8080}`)
 }
 
 app.on('ready', createWindow)

@@ -122,5 +122,6 @@ module.exports = merge(common, {
     historyApiFallback: {
       index: 'index.html'
     }
-  }
+  },
+  target: 'electron-renderer'
 })
