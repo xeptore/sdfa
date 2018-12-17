@@ -1,3 +1,4 @@
 export default {
-  DFA: {}
+  DFA: {},
+  ValidationResult: false
 }
