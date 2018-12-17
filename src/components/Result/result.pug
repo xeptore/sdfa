@@ -8,11 +8,11 @@ div(dir="ltr").result-container.d-flex.flex-column.align-items-center.text-cente
 
 .navigation-buttons-container.d-flex.justify-content-around
     .back-button-container.mx-2
-        button.button.back-button.d-flex.align-items-center.cursor-pointer
+        button(@click="goBack").button.back-button.d-flex.align-items-center.cursor-pointer
             i.fas.fa-chevron-right.ml-2
             span.button-title.mt-1 صفحه قبل
 
     .home-button-container.mx-2
-        button.button.home-button.d-flex.align-items-center.cursor-pointer
+        button(@click="goHome").button.home-button.d-flex.align-items-center.cursor-pointer
             i.fas.fa-home.ml-2
             span.button-title.mt-1 صفحه اول
