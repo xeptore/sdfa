@@ -1,7 +1,5 @@
-let alphabets = []
-let states = []
-let endStates = []
-
-function validate (input) {
-  input = ''
+export class Validator {
+  Validate (input, DFA) {
+    console.log(DFA.Accepts(input))
+  }
 }

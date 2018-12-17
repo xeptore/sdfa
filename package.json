@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "webpack --watch",
-    "start": "webpack-dev-server --config=webpack.dev.js --open",
+    "start": "webpack-dev-server --config=webpack.dev.js",
     "app": "electron .",
     "build": "NODE_ENV=production webpack --config=webpack.prod.js --mode=production && rm -rf *.LICENSE"
   },
@@ -30,6 +30,7 @@
     "connect-history-api-fallback": "^1.5.0",
     "css-loader": "^2.0.1",
     "electron": "^3.0.12",
+    "electron-devtools-installer": "^2.2.4",
     "eslint": "^5.10.0",
     "eslint-config-standard": "^12.0.0",
     "eslint-plugin-import": "^2.14.0",
