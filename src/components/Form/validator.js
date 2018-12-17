@@ -1,5 +1,9 @@
+import Globals from '../../globals'
+
 export class Validator {
   Validate (input, DFA) {
-    console.log(DFA.Accepts(input))
+    const isAccepted = DFA.Accepts(input)
+    console.log('isAccepted:', isAccepted)
+    Globals.ValidationResult = isAccepted
   }
 }
