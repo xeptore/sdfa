@@ -15,5 +15,13 @@ export default {
     return {
       result: Globals.ValidationResult
     }
+  },
+  methods: {
+    goBack: function () {
+      this.$router.push({ path: '/form' })
+    },
+    goHome: function () {
+      this.$router.push({ path: '/home' })
+    }
   }
 }
