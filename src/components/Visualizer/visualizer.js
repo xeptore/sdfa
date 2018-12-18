@@ -24,7 +24,7 @@ export default {
     const viz = new Viz({ Module, render })
     viz.renderSVGElement(dot).then(res => {
       console.log('res:', res)
-      document.getElementById('diagram').innerHTML = res
+      document.getElementById('diagram').appendChild(res)
     })
   }
 }
