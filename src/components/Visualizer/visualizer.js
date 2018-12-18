@@ -1,38 +1,67 @@
+import Wrapper from '../Wrapper/Wrapper.vue'
+
+import StateMachine from 'javascript-state-machine'
+import Visualize from 'javascript-state-machine/lib/visualize'
+
 import Globals from '../../globals'
 
-import { select } from 'd3-selection'
-import dagreD3 from 'dagre-d3'
+import {
+  read,
+  write
+} from 'graphlib-dot'
+
+import {
+  select
+} from 'd3-selection'
+import 'd3-graphviz'
 
 export default {
   name: 'Visualizer',
+  components: {
+    Wrapper
+  },
   mounted () {
-    const g = new dagreD3.graphlib.Graph().setGraph({})
-    for (let i = 0; i < Globals.DFA.States; i++) {
-      g.setNode(i, { label: i, shape: 'circle' })
+    const fsmConfig = {
+      init: '0',
+      transitions: []
     }
     for (const [pk, pv] of Globals.DFA.Transitions.entries()) {
       for (const [ck, cv] of pv.entries()) {
-        g.setEdge(pk, cv, { 'label': ck })
+        fsmConfig.transitions.push({
+          name: ck,
+          from: pk,
+          to: cv
+        })
       }
     }
 
-    g.edges().forEach(e => {
-      const edge = g.edge(e)
-      edge.style = ['stroke: black', 'fill: none'].join(';')
+    const fsm = new StateMachine(fsmConfig)
+    const dot = Visualize(fsm, {
+      name: 'DFA',
+      orientation: 'horizontal'
     })
 
-    g.nodes().forEach(n => {
-      const node = g.node(n)
-      node.style = 'fill: whitesmoke'
-      node.rx = node.ry = 10
+    const graph = read(dot)
+
+    graph.setNode('0', {
+      shape: 'circle'
+    })
+    graph.nodes().forEach(n => {
+      if (Globals.DFA.Acceptings.indexOf(n) !== -1) {
+        graph.setNode(n, {
+          style: 'filled',
+          fillcolor: 'grey',
+          shape: 'doublecircle'
+        })
+      }
     })
 
-    const renderer = new dagreD3.render()
-    const svg = select('svg')
-    console.log('svg:', svg)
-    const inner = svg.select('g')
-    renderer(inner, g)
-
-    // console.log(renderer(inner, g))
+    select('#diagram').graphviz({
+      useWorker: false
+    }).renderDot(write(graph), () => {
+      const svg = document.getElementsByTagName('svg')[0]
+      svg.setAttribute('height', '90%')
+      svg.setAttribute('width', '90%')
+    })
   }
 }

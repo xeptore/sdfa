@@ -13,8 +13,12 @@ const {
 } = require('vue-loader')
 
 const TemplateMeta = {
-  viewport: { 'viewport': 'width=device-width, initial-scale=1, shrink-to-fit=no' },
-  charset: { 'charset': 'UTF-8' }
+  viewport: {
+    'viewport': 'width=device-width, initial-scale=1, shrink-to-fit=no'
+  },
+  charset: {
+    'charset': 'UTF-8'
+  }
 }
 
 module.exports = merge(common, {
@@ -34,46 +38,45 @@ module.exports = merge(common, {
       include: [
         path.resolve(__dirname, 'src')
       ],
-      use: [
-        {
-          loader: 'style-loader',
-          options: {
-            sourceMap: true
-          }
-        },
-        {
-          loader: 'css-loader',
-          options: {
-            camelCase: true,
-            sourceMap: true
-          }
-        },
-        {
-          loader: 'postcss-loader',
-          options: {
-            sourceMap: true
-          }
-        },
-        {
-          loader: 'resolve-url-loader',
-          options: {
-            sourceMap: true,
-            keepQuery: true,
-            debug: true
-          }
-        },
-        {
-          loader: 'sass-loader',
-          options: {
-            sourceComments: true,
-            sourceMap: true,
-            sourceMapContents: true,
-            outputStyle: 'expanded',
-            includePaths: [
-              './node_modules'
-            ]
-          }
+      use: [{
+        loader: 'style-loader',
+        options: {
+          sourceMap: true
         }
+      },
+      {
+        loader: 'css-loader',
+        options: {
+          camelCase: true,
+          sourceMap: true
+        }
+      },
+      {
+        loader: 'postcss-loader',
+        options: {
+          sourceMap: true
+        }
+      },
+      {
+        loader: 'resolve-url-loader',
+        options: {
+          sourceMap: true,
+          keepQuery: true,
+          debug: true
+        }
+      },
+      {
+        loader: 'sass-loader',
+        options: {
+          sourceComments: true,
+          sourceMap: true,
+          sourceMapContents: true,
+          outputStyle: 'expanded',
+          includePaths: [
+            './node_modules'
+          ]
+        }
+      }
       ]
     },
     {
