@@ -1,5 +1,7 @@
 import Wrapper from '../Wrapper/Wrapper.vue'
 
+import './viz.worker'
+
 import StateMachine from 'javascript-state-machine'
 import Visualize from 'javascript-state-machine/lib/visualize'
 
@@ -44,7 +46,7 @@ export default {
     const graph = read(dot)
 
     graph.setNode('0', {
-      shape: 'rectangle'
+      shape: 'circle'
     })
     graph.nodes().forEach(n => {
       if (Globals.DFA.Acceptings.indexOf(n) !== -1) {
