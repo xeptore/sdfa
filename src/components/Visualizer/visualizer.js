@@ -5,8 +5,15 @@ import Visualize from 'javascript-state-machine/lib/visualize'
 
 import Globals from '../../globals'
 
-import Viz from 'viz.js'
-const { Module, render } = require('viz.js/full.render')
+import {
+  read,
+  write
+} from 'graphlib-dot'
+
+import {
+  select
+} from 'd3-selection'
+import 'd3-graphviz'
 
 export default {
   name: 'Visualizer',
@@ -14,23 +21,45 @@ export default {
     Wrapper
   },
   mounted () {
-    const fsmConfig = { init: 0, transitions: [] }
+    const fsmConfig = {
+      init: '0',
+      transitions: []
+    }
     for (const [pk, pv] of Globals.DFA.Transitions.entries()) {
       for (const [ck, cv] of pv.entries()) {
-        fsmConfig.transitions.push({ name: ck, from: pk, to: cv })
+        fsmConfig.transitions.push({
+          name: ck,
+          from: pk,
+          to: cv
+        })
       }
     }
 
     const fsm = new StateMachine(fsmConfig)
-    const dot = Visualize(fsm, { name: 'DFA', orientation: 'horizontal' })
+    const dot = Visualize(fsm, {
+      name: 'DFA',
+      orientation: 'horizontal'
+    })
 
-    const viz = new Viz({ Module, render })
-    viz.renderSVGElement(dot).then(res => {
-      const wrapper = document.getElementById('diagram')
-      wrapper.appendChild(res)
-      const svg = wrapper.getElementsByTagName('svg')[0]
-      svg.setAttribute('height', '100%')
-      svg.setAttribute('width', '100%')
+    const graph = read(dot)
+
+    graph.setNode('0', {
+      shape: 'rectangle'
+    })
+    graph.nodes().forEach(n => {
+      if (Globals.DFA.Acceptings.indexOf(n) !== -1) {
+        graph.setNode(n, {
+          style: 'filled',
+          fillcolor: 'grey',
+          shape: 'doublecircle'
+        })
+      }
+    })
+
+    select('#diagram').graphviz().renderDot(write(graph), () => {
+      const svg = document.getElementsByTagName('svg')[0]
+      svg.setAttribute('height', '90%')
+      svg.setAttribute('width', '90%')
     })
   }
 }
