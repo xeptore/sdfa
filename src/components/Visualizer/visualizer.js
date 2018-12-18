@@ -1,30 +1,38 @@
-import StateMachine from 'javascript-state-machine'
-import Visualize from 'javascript-state-machine/lib/visualize'
-
 import Globals from '../../globals'
 
-import Viz from 'viz.js'
-const { Module, render } = require('viz.js/full.render')
+import { select } from 'd3-selection'
+import dagreD3 from 'dagre-d3'
 
 export default {
   name: 'Visualizer',
-  created () {
-    const fsmConfig = { init: '0', transitions: [] }
+  mounted () {
+    const g = new dagreD3.graphlib.Graph().setGraph({})
+    for (let i = 0; i < Globals.DFA.States; i++) {
+      g.setNode(i, { label: i, shape: 'circle' })
+    }
     for (const [pk, pv] of Globals.DFA.Transitions.entries()) {
       for (const [ck, cv] of pv.entries()) {
-        fsmConfig.transitions.push({ name: ck, from: pk, to: cv })
+        g.setEdge(pk, cv, { 'label': ck })
       }
     }
 
-    console.log('DFA:', Globals.DFA)
-    console.log('fsm:', fsmConfig)
-
-    const fsm = new StateMachine(fsmConfig)
-    const dot = Visualize(fsm)
-    const viz = new Viz({ Module, render })
-    viz.renderSVGElement(dot).then(res => {
-      console.log('res:', res)
-      document.getElementById('diagram').innerHTML = res
+    g.edges().forEach(e => {
+      const edge = g.edge(e)
+      edge.style = ['stroke: black', 'fill: none'].join(';')
     })
+
+    g.nodes().forEach(n => {
+      const node = g.node(n)
+      node.style = 'fill: whitesmoke'
+      node.rx = node.ry = 10
+    })
+
+    const renderer = new dagreD3.render()
+    const svg = select('svg')
+    console.log('svg:', svg)
+    const inner = svg.select('g')
+    renderer(inner, g)
+
+    // console.log(renderer(inner, g))
   }
 }
