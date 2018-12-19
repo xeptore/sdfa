@@ -1,13 +1,19 @@
 <template src="./index.html"></template>
 
 <script>
+import Navigator from "./components/Navigator/Navigator.vue";
+
 const routes = ["/home", "/form", "/result", "/visualizer"];
 
 export default {
   name: "App",
+  components: {
+    Navigator
+  },
   data() {
     return {
-      transition: "fade"
+      transition: "fade",
+      showNavigator: true
     };
   },
   created() {
@@ -18,6 +24,12 @@ export default {
         this.transition = "slide-right";
       } else {
         this.transition = "slide-left";
+      }
+
+      if (to.meta && to.meta.navigator === false) {
+        this.showNavigator = false;
+      } else {
+        this.showNavigator = true;
       }
       next();
     });
