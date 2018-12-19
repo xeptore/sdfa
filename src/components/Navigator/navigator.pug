@@ -1,4 +1,4 @@
-div(dir="rtl").navigator-container.d-flex.justify-content-center.align-items-center
+div(dir="rtl" :class="show ? 'd-flex' : 'd-none'").navigator-container.justify-content-center.align-items-center
     .navigator-icon-container.text-center
         router-link(to="about").navigator-link.p-2.d-inline-block
             p.d-inline-block.m-0.mx-2.mr-4.navigator-text درباره

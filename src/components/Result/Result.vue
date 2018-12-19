@@ -4,8 +4,6 @@ div
         include result
     
     Breadcrumb(page="result")
-
-    Navigator
 </template>
 
 <script src="./Result.js"></script>
