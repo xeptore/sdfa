@@ -23,7 +23,7 @@ export function Routes () {
         path: '/result', component: Result, meta: { transition: 'slide' }
       },
       {
-        path: '/about', component: About, meta: { transition: 'fade' }
+        path: '/about', component: About, meta: { transition: 'fade', navigator: false }
       },
       {
         path: '/visualizer', component: Visualizer, meta: { transition: 'slide' }
