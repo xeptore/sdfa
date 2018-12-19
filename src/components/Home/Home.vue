@@ -4,8 +4,6 @@ div.tingle-content-wrapper
         include home
     
     Breadcrumb(page="home")
-
-    Navigator
 </template>
 
 <script src="./Home.js"></script>

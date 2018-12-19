@@ -1,6 +1,6 @@
 import Wrapper from '../Wrapper/Wrapper.vue'
 import Breadcrumb from '../Breadcrumb/Breadcrumb.vue'
-import Navigator from '../Navigator/Navigator.vue'
+
 import {
   remote
 } from 'electron'
@@ -34,8 +34,7 @@ export default {
   name: 'Home',
   components: {
     Wrapper,
-    Breadcrumb,
-    Navigator
+    Breadcrumb
   },
   methods: {
     uploadButtonClicked: function (e) {
