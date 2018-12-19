@@ -31,7 +31,7 @@ body {
 $margin-space: 3;
 
 .container-fluid {
-    $h: calc(100% - #{3 * $margin-space}rem);
+    $h: calc(100% - #{2.5 * $margin-space}rem);
     height: $h;
     width: auto;
 }
