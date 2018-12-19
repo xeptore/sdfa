@@ -29,8 +29,6 @@ export default {
         this.transition = "slide-left";
       }
 
-      console.log("to.meta.navigator:", to.meta.navigator);
-
       if (to.meta && to.meta.navigator) {
         // about page navigator
         this.navigator.about = to.meta.navigator.about;
