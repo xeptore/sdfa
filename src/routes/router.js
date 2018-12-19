@@ -27,6 +27,9 @@ export function Routes () {
       },
       {
         path: '/visualizer', component: Visualizer, meta: { transition: 'slide', navigator: { about: true, visualizer: false } }
+      },
+      {
+        path: '*', redirect: '/home'
       }
     ]
   })
