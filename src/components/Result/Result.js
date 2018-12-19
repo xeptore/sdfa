@@ -17,7 +17,7 @@ export default {
     }
   },
   mounted () {
-    const pw = pleaseWait.pleaseWait({
+    pleaseWait.pleaseWait({
       backgroundColor: 'white',
       loadingHtml: `<div class="sk-double-bounce">
       <div class="sk-child sk-double-bounce1"></div>
@@ -29,7 +29,10 @@ export default {
     wrapper.appendChild(wait)
 
     setTimeout(() => {
-      pw.finish()
+      const loading = document.getElementsByClassName('pg-loading-screen')[0]
+      if (loading) {
+        loading.remove()
+      }
     }, 3514)
   },
   methods: {
