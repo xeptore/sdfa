@@ -68,5 +68,10 @@ export default {
       const rep = svg.cloneNode(true)
       svg.parentNode.replaceChild(rep, svg)
     })
+  },
+  methods: {
+    back (e) {
+      this.$router.go(-1)
+    }
   }
 }
