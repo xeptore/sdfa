@@ -23,7 +23,7 @@ export const modal = new Modal({
 })
 
 modal.setContent(
-  '<i class="far fa-frown fa-7x"></i><p dir="rtl" class="my-2 text-fa text-bold">فایل وارد شده درست نیست</p>'
+  '<i class="far fa-frown fa-7x"></i><p dir="rtl" class="my-2 text-fa text-bold">فایلی که وارد کردی معتبر نیست.</p>'
 )
 
 modal.addFooterBtn(
