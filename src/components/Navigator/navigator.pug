@@ -1,5 +1,12 @@
-div(dir="rtl" :class="show ? 'd-flex' : 'd-none'").navigator-container.justify-content-center.align-items-center
-    .navigator-icon-container.text-center
-        router-link(to="about").navigator-link.p-2.d-inline-block
-            p.d-inline-block.m-0.mx-2.mr-4.navigator-text درباره
-            i.fas.fa-info-circle.navigator-icon.ml-1
+div(dir="rtl")
+    div(:class="about ? 'd-flex' : 'd-none'").navigator-container.justify-content-center.align-items-center
+        .navigator-icon-container.text-center
+            router-link(to="about").navigator-link.p-2.d-inline-block
+                p.d-inline-block.m-0.mx-2.mr-4.navigator-text درباره
+                i.fas.fa-info-circle.navigator-icon.ml-1
+    
+    div(:class="visualizer ? 'd-flex' : 'd-none'").visualizer-navigator-container.justify-content-center.align-items-center
+        .navigator-icon-container.text-center
+            router-link(to="visualizer").navigator-link.p-2.d-inline-block
+                p.d-inline-block.m-0.mx-2.mr-4.navigator-text دیاگرام
+                i.fas.fa-project-diagram.visualizer-navigator-icon.ml-1
