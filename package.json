@@ -1,5 +1,9 @@
 {
-  "name": "sadeghpour",
+  "name": "DFA",
+  "author": {
+    "email": "morteza6909@gmail.com",
+    "name": "Xeptore"
+  },
   "version": "1.0.0",
   "description": "words acceptation check by dfa machines project",
   "main": "app.js",
@@ -8,13 +12,20 @@
     "watch": "webpack --watch",
     "start": "webpack-dev-server --config=webpack.dev.js",
     "app": "electron .",
-    "build": "NODE_ENV=production webpack --config=webpack.prod.js --mode=production && rm -rf *.LICENSE"
+    "build": "NODE_ENV=production webpack --config=webpack.prod.js --mode=production && rm -rf *.LICENSE",
+    "dist": "electron-builder"
   },
   "repository": "git@github.com:xeptore/sadfa.git",
-  "author": "xeptore",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/xeptore/sadfa/issues"
+  },
+  "build": {
+    "appId": "dfa",
+    "linux": {
+      "target": "deb",
+      "executableName": "dfa"
+    }
   },
   "homepage": "https://github.com/xeptore/sadfa#readme",
   "devDependencies": {
@@ -33,6 +44,7 @@
     "d3": "^5.7.0",
     "d3-graphviz": "^2.6.0",
     "electron": "^3.0.13",
+    "electron-builder": "^20.38.4",
     "electron-devtools-installer": "^2.2.4",
     "eslint": "^5.10.0",
     "eslint-config-standard": "^12.0.0",
