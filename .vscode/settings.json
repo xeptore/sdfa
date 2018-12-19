@@ -1,4 +1,6 @@
 {
     "files.autoSave": "onFocusChange",
-    "eslint.autoFixOnSave": true
+    "eslint.autoFixOnSave": true,
+    "npm.packageManager": "yarn",
+    "sasslint.packageManager": "yarn"
 }

@@ -1,6 +1,11 @@
-p.text {
+p.text,
+.text-fa {
     font-family: 'BRoya';
     font-size: x-large;
+}
+
+.text-bold {
+    font-weight: bolder;
 }
 
 button {

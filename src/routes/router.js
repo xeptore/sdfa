@@ -4,6 +4,7 @@ import Home from '../components/Home/Home.vue'
 import Form from '../components/Form/Form.vue'
 import Result from '../components/Result/Result.vue'
 import About from '../components/About/About.vue'
+import Visualizer from '../components/Visualizer/Visualizer.vue'
 
 export function Routes () {
   const router = new VueRouter({
@@ -23,6 +24,9 @@ export function Routes () {
       },
       {
         path: '/about', component: About, meta: { transition: 'fade' }
+      },
+      {
+        path: '/visual', component: Visualizer, meta: { transition: 'slide' }
       }
     ]
   })
