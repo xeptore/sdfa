@@ -26,7 +26,7 @@ export function Routes () {
         path: '/about', component: About, meta: { transition: 'fade' }
       },
       {
-        path: '/visual', component: Visualizer, meta: { transition: 'slide' }
+        path: '/visualizer', component: Visualizer, meta: { transition: 'slide' }
       }
     ]
   })
