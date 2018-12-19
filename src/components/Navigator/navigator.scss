@@ -18,7 +18,7 @@ $navigator-colors: map-get($colors, about-navigator);
         }
 
         &>.navigator-icon-container>.navigator-link {
-            color: darken(map-get($navigator-colors, icon), 20%);
+            color: darken(map-get($navigator-colors, icon), 25%);
             &>.navigator-text {
                 opacity: 1;
             }
