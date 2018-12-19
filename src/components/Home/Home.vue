@@ -1,5 +1,5 @@
 <template lang="pug">
-div
+div.tingle-content-wrapper
     Wrapper
         include home
     
@@ -10,7 +10,8 @@ div
 
 <script src="./Home.js"></script>
 
-<style lang="scss" scoped>
-    @import '../_shared/styles/main.scss';
-    @import './styles/style.scss';
+<style lang="scss">
+@import "../_shared/styles/main.scss";
+@import "~tingle.js/src/tingle.css";
+@import "./styles/style.scss";
 </style>
