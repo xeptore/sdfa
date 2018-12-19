@@ -1,5 +1,6 @@
+const { join } = require('path')
+const { format } = require('url')
 const { app, BrowserWindow } = require('electron')
-const { default: installExtension, VUEJS_DEVTOOLS } = require('electron-devtools-installer')
 
 // preventing from collected by garbage collector
 let win
@@ -7,11 +8,7 @@ let win
 function createWindow () {
   win = new BrowserWindow({ width: 900, height: 680, resizable: false })
 
-  installExtension(VUEJS_DEVTOOLS)
-    .then(name => console.log(`Added Extension: ${name}`))
-    .catch(e => console.log(`An Error Occurred: ${e}`))
-
-  // win.setMenu(null)
+  win.setMenu(null)
   win.focus()
   win.webContents.openDevTools()
 
@@ -19,7 +16,11 @@ function createWindow () {
     win.show()
   })
 
-  win.loadURL(`http://localhost:${8080}`)
+  win.loadURL(format({
+    pathname: join(__dirname, 'dist', 'index.html'),
+    protocol: 'file:',
+    slashes: true
+  }))
 }
 
 app.on('ready', createWindow)
