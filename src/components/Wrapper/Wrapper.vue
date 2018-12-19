@@ -5,3 +5,10 @@
 </template>
 
 <script src="./wrapper.js"></script>
+
+<style lang="scss">
+.wrapper {
+  overflow: hidden;
+}
+</style>
+

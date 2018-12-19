@@ -28,3 +28,22 @@
     font-weight: bolder;
     font-size: x-large;
 }
+
+.pg-loading-screen {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.pg-loading-logo-header {
+    display: none;
+}
+
+.pg-loading-html {
+    @extend .m-0;
+
+    & > .sk-double-bounce {
+        width: 50px;
+        height: 50px;
+    }
+}

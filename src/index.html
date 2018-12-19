@@ -1,12 +1,10 @@
-<body>
-    <div id="app" class="user-unselectable">
-        <router-link to="/home">Home</router-link>
-        <router-link to="/form">form</router-link>
-        <router-link to="/result">result</router-link>
-        <router-link to="/about">about</router-link>
-        <router-link to="/visual">visualer</router-link>
-        <transition :name="transition" mode="out-in">
-            <router-view></router-view>
-        </transition>
-    </div>
-</body>
+<div id="app" class="user-unselectable">
+    <router-link to="/home">Home</router-link>
+    <router-link to="/form">form</router-link>
+    <router-link to="/result">result</router-link>
+    <router-link to="/about">about</router-link>
+    <router-link to="/visual">visualer</router-link>
+    <transition :name="transition" mode="out-in">
+        <router-view></router-view>
+    </transition>
+</div>
