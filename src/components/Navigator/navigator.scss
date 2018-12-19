@@ -1,6 +1,7 @@
 $navigator-colors: map-get($colors, about-navigator);
 
-.navigator-container {
+.navigator-container,
+.visualizer-navigator-container {
     position: fixed;
     right: -75px;
     bottom: 150px;
@@ -17,12 +18,9 @@ $navigator-colors: map-get($colors, about-navigator);
         }
 
         &>.navigator-icon-container>.navigator-link {
+            color: darken(map-get($navigator-colors, icon), 20%);
             &>.navigator-text {
                 opacity: 1;
-            }
-
-            &>.navigator-icon {
-                color: darken(map-get($navigator-colors, icon), 30%);
             }
         }
     }
@@ -42,12 +40,17 @@ $navigator-colors: map-get($colors, about-navigator);
                 opacity: 0;
             }
 
-            >.navigator-icon {
+            >i {
                 transition: color 100ms ease-in-out;
                 vertical-align: sub;
             }
         }
     }
+}
+
+.visualizer-navigator-container {
+    bottom: 210px;
+    right: -90px;
 }
 
 @keyframes reveal {

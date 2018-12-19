@@ -13,7 +13,10 @@ export default {
   data() {
     return {
       transition: "fade",
-      showNavigator: true
+      navigator: {
+        about: true,
+        visualizer: false
+      }
     };
   },
   created() {
@@ -26,11 +29,16 @@ export default {
         this.transition = "slide-left";
       }
 
-      if (to.meta && to.meta.navigator === false) {
-        this.showNavigator = false;
-      } else {
-        this.showNavigator = true;
+      console.log("to.meta.navigator:", to.meta.navigator);
+
+      if (to.meta && to.meta.navigator) {
+        // about page navigator
+        this.navigator.about = to.meta.navigator.about;
+
+        // visualizer page navigator
+        this.navigator.visualizer = to.meta.navigator.visualizer;
       }
+
       next();
     });
   }

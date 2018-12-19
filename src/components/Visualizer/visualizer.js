@@ -13,6 +13,7 @@ import {
 import {
   select
 } from 'd3-selection'
+
 import 'd3-graphviz'
 
 export default {
@@ -62,6 +63,10 @@ export default {
       const svg = document.getElementsByTagName('svg')[0]
       svg.setAttribute('height', '90%')
       svg.setAttribute('width', '90%')
+
+      // remove all event listeners from generated svg
+      const rep = svg.cloneNode(true)
+      svg.parentNode.replaceChild(rep, svg)
     })
   }
 }
