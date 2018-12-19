@@ -3,7 +3,7 @@
 <script>
 export default {
   name: "Navigator",
-  props: ["show"]
+  props: ["about", "visualizer"]
 };
 </script>
 
