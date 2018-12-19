@@ -14,4 +14,5 @@ div.tingle-content-wrapper
 @import "../_shared/styles/main.scss";
 @import "~tingle.js/src/tingle.css";
 @import "./styles/style.scss";
+@import "./styles/modal.scss";
 </style>
