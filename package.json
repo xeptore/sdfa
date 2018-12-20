@@ -1,5 +1,5 @@
 {
-  "name": "DFA",
+  "name": "fsm",
   "author": {
     "email": "morteza6909@gmail.com",
     "name": "Xeptore"
@@ -19,13 +19,6 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/xeptore/sadfa/issues"
-  },
-  "build": {
-    "appId": "dfa",
-    "linux": {
-      "target": "deb",
-      "executableName": "dfa"
-    }
   },
   "homepage": "https://github.com/xeptore/sadfa#readme",
   "devDependencies": {
