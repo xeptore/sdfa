@@ -10,14 +10,16 @@ function createWindow () {
 
   win.setMenu(null)
   win.focus()
-  win.webContents.openDevTools()
+
+  // for development
+  // win.webContents.openDevTools()
 
   win.once('ready-to-show', () => {
     win.show()
   })
 
   win.loadURL(format({
-    pathname: join(__dirname, 'dist', 'index.html'),
+    pathname: join(__dirname, 'index.html'),
     protocol: 'file:',
     slashes: true
   }))
