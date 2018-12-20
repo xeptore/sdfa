@@ -1,5 +1,5 @@
 {
-  "name": "DFA",
+  "name": "fsm",
   "author": {
     "email": "morteza6909@gmail.com",
     "name": "Xeptore"
@@ -19,58 +19,6 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/xeptore/sadfa/issues"
-  },
-  "build": {
-    "productName": "DFA Educational Project",
-    "appId": "dfa",
-    "directories": {
-      "output": "build"
-    },
-    "linux": {
-      "icon": "src/assets/images/icon.ico",
-      "description": "DFA Input Acceptance Checker Machine Educational Project",
-      "executableName": "dfa",
-      "synopsis": "DFA Input Acceptance Checker Machine Educational Project",
-      "category": "Educational",
-      "target": [
-        {
-          "target": "deb",
-          "arch": [
-            "x64",
-            "ia32",
-            "arm64"
-          ]
-        },
-        {
-          "target": "rpm",
-          "arch": [
-            "x64",
-            "ia32",
-            "arm64"
-          ]
-        },
-        {
-          "target": "apk",
-          "arch": [
-            "x64",
-            "ia32",
-            "arm64"
-          ]
-        }
-      ]
-    },
-    "win": {
-      "icon": "src/assets/images/icon.ico",
-      "target": [
-        {
-          "target": "nsis",
-          "arch": [
-            "x64",
-            "ia32"
-          ]
-        }
-      ]
-    }
   },
   "homepage": "https://github.com/xeptore/sadfa#readme",
   "devDependencies": {
