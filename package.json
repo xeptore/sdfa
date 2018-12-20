@@ -12,8 +12,8 @@
     "watch": "webpack --watch",
     "start": "webpack-dev-server --config=webpack.dev.js",
     "app": "electron .",
-    "build": "NODE_ENV=production webpack --config=webpack.prod.js --mode=production && rm -rf *.LICENSE",
-    "dist": "electron-builder"
+    "build": "NODE_ENV=production webpack --config=webpack.prod.js --mode=production && sed '1d' -i dist/*.js && rm -r dist/*.LICENSE",
+    "dist": "electron-builder -l"
   },
   "repository": "git@github.com:xeptore/sadfa.git",
   "license": "MIT",
