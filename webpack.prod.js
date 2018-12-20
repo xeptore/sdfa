@@ -63,7 +63,9 @@ module.exports = merge(common, {
       },
       {
         loader: 'resolve-url-loader',
-        options: {}
+        options: {
+          debug: true
+        }
       },
       {
         loader: 'sass-loader',
@@ -95,7 +97,7 @@ module.exports = merge(common, {
           publicPath: 'assets/images',
           outputPath: 'assets/images'
         }
-      } ]
+      }]
     },
     {
       test: /\.pug$/,
