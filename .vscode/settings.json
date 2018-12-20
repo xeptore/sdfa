@@ -2,5 +2,6 @@
     "files.autoSave": "off",
     "eslint.autoFixOnSave": true,
     "npm.packageManager": "yarn",
-    "sasslint.packageManager": "yarn"
+    "sasslint.packageManager": "yarn",
+    "editor.formatOnSave": true
 }
