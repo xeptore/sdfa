@@ -1,11 +1,11 @@
 {
-  "name": "fsm",
+  "name": "sdfa",
   "author": {
     "email": "morteza6909@gmail.com",
     "name": "Xeptore"
   },
-  "version": "1.0.0",
-  "description": "words acceptation check by dfa machines project",
+  "version": "1.0.1",
+  "description": "dfa machine checks acceptance of user inputs",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -15,12 +15,12 @@
     "build": "NODE_ENV=production webpack --config=webpack.prod.js --mode=production && sed '1d' -i dist/*.js && rm -r dist/*.LICENSE",
     "dist": "electron-builder -l"
   },
-  "repository": "git@github.com:xeptore/sadfa.git",
+  "repository": "git@gitlab.com:xeptore/sdfa.git",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/xeptore/sadfa/issues"
+    "url": "https://gitlab.com/xeptore/sdfa/issues"
   },
-  "homepage": "https://github.com/xeptore/sadfa#readme",
+  "homepage": "https://gitlab.com/xeptore/sdfa#readme",
   "devDependencies": {
     "@babel/core": "^7.2.2",
     "@babel/plugin-proposal-class-properties": "^7.2.3",
