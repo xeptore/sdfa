@@ -17,19 +17,19 @@ linux:
             arch:
                 - x64
                 - ia32
-                - arm64
-        - 
-            target: rpm
-            arch:
-                - x64
-                - ia32
-                - arm64
-        - 
-            target: apk
-            arch:
-                - x64
-                - ia32
-                - arm64
+        #         - arm64
+        # - 
+        #     target: rpm
+        #     arch:
+        #         - x64
+        #         - ia32
+        #         - arm64
+        # - 
+        #     target: apk
+        #     arch:
+        #         - x64
+        #         - ia32
+        #         - arm64
 win:
     icon: src/assets/images/icons/icon.ico
     target:
