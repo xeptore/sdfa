@@ -33,11 +33,9 @@ $margin-space: 3;
 .container-fluid {
     $h: calc(100% - #{2 * $margin-space}rem);
     height: $h;
-    width: auto;
 }
 
 .wrapper {
-    @extend .m-#{$margin-space};
     border-radius: 2rem;
     border: 6px dashed map-get($colors, main-wrapper-border-color);
 }
@@ -53,7 +51,7 @@ $margin-space: 3;
     }
 
     @include media-breakpoint-down(md) {
-        width: 75%;
+        width: 85%;
     }
 
     @include media-breakpoint-down(sm) {

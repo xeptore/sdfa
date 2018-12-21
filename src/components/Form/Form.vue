@@ -1,9 +1,6 @@
 <template lang="pug">
-div
-    Wrapper
-        include form
-    
-    Breadcrumb(page="form")
+Wrapper
+    include form
 </template>
 
 <script src="./Form.js"></script>

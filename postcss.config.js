@@ -12,6 +12,7 @@ module.exports = ({ env }) => {
   return {
     parser: false,
     plugins: {
+      'cssnano': prodEval({ preset: ['default', { discardComments: { removeAll: true } }] }),
       'postcss-easings': prodEval({}),
       'postcss-easing-gradients': prodEval({
         alphaDecimals: 10,
