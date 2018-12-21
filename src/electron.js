@@ -6,7 +6,16 @@ const { app, BrowserWindow } = require('electron')
 let win
 
 function createWindow () {
-  win = new BrowserWindow({ width: 800, height: 580, resizable: true })
+  win = new BrowserWindow({
+    width: 800,
+    height: 580,
+    resizable: false,
+    maximizable: false,
+    webPreferences: {
+      devTools: false,
+      nodeIntegration: false
+    }
+  })
 
   win.setMenu(null)
   win.focus()
