@@ -31,7 +31,7 @@ linux:
                 - ia32
                 - arm64
 win:
-    icon: src/assets/images/icons
+    icon: src/assets/images/icons/icon.ico
     target:
         - 
             target: nsis
