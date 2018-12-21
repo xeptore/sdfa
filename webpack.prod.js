@@ -35,75 +35,75 @@ module.exports = merge(common, {
     filename: path.join('app.js')
   },
   module: {
-    rules: [{
-      test: /\.vue$/,
-      loader: 'vue-loader'
-    },
-    {
-      test: /\.js$/,
-      include: path.resolve(__dirname, 'src'),
-      use: 'babel-loader'
-    },
-    {
-      test: /\.scss$/,
-      include: [
-        path.resolve(__dirname, 'src')
-      ],
-      use: [{
-        loader: MiniCssExtractPlugin.loader,
-        options: {}
+    rules: [
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader'
       },
       {
-        loader: 'css-loader',
-        options: {}
+        test: /\.js$/,
+        include: path.resolve(__dirname, 'src'),
+        use: 'babel-loader'
       },
       {
-        loader: 'postcss-loader',
-        options: {}
+        test: /\.scss$/,
+        include: [
+          path.resolve(__dirname, 'src')
+        ],
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {}
+          },
+          {
+            loader: 'css-loader',
+            options: {}
+          },
+          {
+            loader: 'postcss-loader',
+            options: {}
+          },
+          {
+            loader: 'resolve-url-loader',
+            options: {
+              debug: true
+            }
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true,
+              outputStyle: 'compressed',
+              includePaths: [
+                './node_modules'
+              ]
+            }
+          }
+        ]
       },
       {
-        loader: 'resolve-url-loader',
+        test: /\.(woff|woff2|eot|ttf)$/,
+        loader: 'file-loader',
         options: {
-          debug: true
+          name: '[name].[ext]',
+          publicPath: 'assets/fonts',
+          outputPath: 'assets/fonts'
         }
       },
       {
-        loader: 'sass-loader',
-        options: {
-          sourceMap: true,
-          outputStyle: 'compressed',
-          includePaths: [
-            './node_modules'
-          ]
-        }
-      }
-      ]
-    },
-    {
-      test: /\.(woff|woff2|eot|ttf)$/,
-      loader: 'file-loader',
-      options: {
-        name: '[name].[ext]',
-        publicPath: 'assets/fonts',
-        outputPath: 'assets/fonts'
-      }
-    },
-    {
-      test: /\.(jpe?g|png|svg)/,
-      use: [{
+        test: /\.(jpe?g|png|svg)/,
         loader: 'file-loader',
         options: {
           name: '[name].[ext]',
           publicPath: 'assets/images',
           outputPath: 'assets/images'
         }
-      }]
-    },
-    {
-      test: /\.pug$/,
-      loader: 'pug-plain-loader'
+      },
+      {
+        test: /\.pug$/,
+        loader: 'pug-plain-loader'
 
-    }
+      }
     ]
   },
   plugins: [
