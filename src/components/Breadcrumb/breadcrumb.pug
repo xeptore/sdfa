@@ -1,10 +1,10 @@
 div(dir="rtl" :class="{ hidden: !data.show }")#breadcrumb.container.d-flex.justify-content-center.align-items-center.w-75
-    div(:class="{ active: data.page === '/home' }").bc-item.col.d-flex.align-items-center.justify-content-center
+    div(:class="{ active: data.page === '/home' }").bc-item.col-3.d-flex.align-items-center.justify-content-center
         .bc-title.d-flex.align-items-center.justify-content-center.text-center
             p.my-3.bc-text 1. آپلود فایل
-    div(:class="{ active: data.page === '/form' }").bc-item.col.d-flex.align-items-center.justify-content-center.mx-2
+    div(:class="{ active: data.page === '/form' }").bc-item.col-3.d-flex.align-items-center.justify-content-center.mx-2
         .bc-title.d-flex.align-items-center.justify-content-center.text-center
             p.my-3.bc-text 2. ورود رشته
-    div(:class="{ active: data.page === '/result' }").bc-item.col.d-flex.align-items-center.justify-content-center
+    div(:class="{ active: data.page === '/result' }").bc-item.col-3.d-flex.align-items-center.justify-content-center
         .bc-title.d-flex.align-items-center.justify-content-center.text-center
             p.my-3.bc-text 3. نتیجه
