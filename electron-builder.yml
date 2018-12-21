@@ -6,7 +6,7 @@ files:
     - "dist/"
     - "!dist/stats"
 linux:
-    icon: src/assets/images/icon.ico
+    icon: src/assets/images/icons
     description: DFA Input Acceptance Checker Machine Educational Project
     executableName: dfa
     synopsis: DFA Input Acceptance Checker Machine Educational Project
@@ -31,7 +31,7 @@ linux:
                 - ia32
                 - arm64
 win:
-    icon: src/assets/images/icon.ico
+    icon: src/assets/images/icons
     target:
         - 
             target: nsis
