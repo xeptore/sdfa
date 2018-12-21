@@ -2,6 +2,9 @@ productName: DFA
 appId: dfa
 directories:
     output: build
+files:
+    - "dist/"
+    - "!dist/stats"
 linux:
     icon: src/assets/images/icon.ico
     description: DFA Input Acceptance Checker Machine Educational Project
