@@ -31,10 +31,15 @@ linux:
         #         - ia32
         #         - arm64
 win:
-    icon: src/assets/images/icons/icon.ico
+    icon: src/assets/images/icons/app/app.ico
     target:
         - 
             target: nsis
+            oneClick: false
+            installerIcon: src/assets/images/icons/installer/installer.ico
+            uninstallerIcon: src/assets/images/icons/uninstaller/uninstaller.ico
+            perMachine: false
+            allowToChangeInstallationDirectory: true
             arch:
                 - x64
                 - ia32
