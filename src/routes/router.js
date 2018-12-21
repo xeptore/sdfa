@@ -14,19 +14,19 @@ export function Routes () {
         path: '/', redirect: '/home', meta: { transition: 'slide' }
       },
       {
-        path: '/home', component: Home, meta: { transition: 'slide', navigator: { about: true, visualizer: false } }
+        path: '/home', component: Home, meta: { transition: 'slide', navigator: { about: true, visualizer: false }, breadcrumb: true }
       },
       {
-        path: '/form', component: Form, meta: { transition: 'slide', navigator: { about: true, visualizer: true } }
+        path: '/form', component: Form, meta: { transition: 'slide', navigator: { about: true, visualizer: true }, breadcrumb: true }
       },
       {
-        path: '/result', component: Result, meta: { transition: 'slide', navigator: { about: true, visualizer: true } }
+        path: '/result', component: Result, meta: { transition: 'slide', navigator: { about: true, visualizer: true }, breadcrumb: true }
       },
       {
-        path: '/about', component: About, meta: { transition: 'fade', navigator: { about: false, visualizer: false } }
+        path: '/about', component: About, meta: { transition: 'fade', navigator: { about: false, visualizer: false }, breadcrumb: false }
       },
       {
-        path: '/visualizer', component: Visualizer, meta: { transition: 'slide', navigator: { about: true, visualizer: false } }
+        path: '/visualizer', component: Visualizer, meta: { transition: 'slide', navigator: { about: true, visualizer: false }, breadcrumb: false }
       },
       {
         path: '*', redirect: '/home'

@@ -4,7 +4,8 @@ const path = require('path')
 
 module.exports = {
   entry: {
-    main: path.resolve(__dirname, 'src', 'app.js')
+    main: path.resolve(__dirname, 'src', 'app.js'),
+    electron: path.resolve(__dirname, 'src', 'electron.js')
   },
   context: path.resolve(__dirname),
   output: {

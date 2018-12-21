@@ -1,4 +1,4 @@
-<div id="app" class="user-unselectable">
+<div id="app" class="user-unselectable h-100 tingle-content-wrapper">
     <!-- <router-link to="/home">Home</router-link>
     <router-link to="/form">form</router-link>
     <router-link to="/result">result</router-link>
@@ -7,5 +7,6 @@
     <transition :name="transition" mode="out-in">
         <router-view></router-view>
     </transition>
+    <Breadcrumb :data="breadcrumb" class="mt-2"></Breadcrumb>
     <Navigator :about="navigator.about" :visualizer="navigator.visualizer"></Navigator>
 </div>

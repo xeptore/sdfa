@@ -6,7 +6,7 @@ const { app, BrowserWindow } = require('electron')
 let win
 
 function createWindow () {
-  win = new BrowserWindow({ width: 900, height: 680, resizable: false })
+  win = new BrowserWindow({ width: 800, height: 580, resizable: true })
 
   win.setMenu(null)
   win.focus()
@@ -23,6 +23,7 @@ function createWindow () {
     protocol: 'file:',
     slashes: true
   }))
+  // win.loadURL('http://localhost:8080')
 }
 
 app.on('ready', createWindow)

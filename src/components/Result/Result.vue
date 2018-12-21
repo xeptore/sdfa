@@ -1,9 +1,6 @@
 <template lang="pug">
-div
-    Wrapper
-        include result
-    
-    Breadcrumb(page="result")
+Wrapper
+    include result
 </template>
 
 <script src="./Result.js"></script>

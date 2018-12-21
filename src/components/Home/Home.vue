@@ -1,9 +1,6 @@
 <template lang="pug">
-div.tingle-content-wrapper
-    Wrapper
-        include home
-    
-    Breadcrumb(page="home")
+Wrapper
+    include home
 </template>
 
 <script src="./Home.js"></script>

@@ -1,9 +1,21 @@
 $bc-colors: map-get($colors, breadcrumb);
 
+#breadcrumb {
+    transition: opacity 200ms ease-in, transform 400ms ease-in-out 300ms;
+    opacity: 1;
+    transform: translateY(0);
+
+    &.hidden {
+        opacity: 0;
+        transform: translateY(200px);
+    }
+}
+
 .bc-item {
     @extend .user-unselectable;
     background-color: map-get(map-get($bc-colors, active), background);
     color: map-get(map-get($bc-colors, active), text);
+    transition: background-color 500ms ease-in-out, color 500ms ease-in-out;
 
 
     &:first-child {
