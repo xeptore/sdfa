@@ -6,7 +6,7 @@
   },
   "version": "1.0.1",
   "description": "dfa machine checks acceptance of user inputs",
-  "main": "app.js",
+  "main": "dist/electron.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "webpack --watch",
@@ -41,6 +41,9 @@
     "electron": "^4.0.0",
     "electron-builder": "^20.38.4",
     "electron-devtools-installer": "^2.2.4",
+    "electron-installer-debian": "^1.0.1",
+    "electron-packager": "^13.0.1",
+    "electron-winstaller": "^2.7.0",
     "eslint": "^5.10.0",
     "eslint-config-standard": "^12.0.0",
     "eslint-plugin-import": "^2.14.0",
