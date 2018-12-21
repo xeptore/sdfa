@@ -8,7 +8,7 @@ import Visualizer from '../components/Visualizer/Visualizer.vue'
 
 export function Routes () {
   const router = new VueRouter({
-    mode: 'history',
+    mode: 'hash', // default
     routes: [
       {
         path: '/', redirect: '/home', meta: { transition: 'slide' }
