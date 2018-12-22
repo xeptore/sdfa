@@ -13,7 +13,7 @@ function createWindow () {
     maximizable: false,
     webPreferences: {
       devTools: false,
-      nodeIntegration: false
+      nodeIntegration: true
     }
   })
 
