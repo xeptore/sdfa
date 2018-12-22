@@ -1,12 +1,12 @@
 productName: DFA
 appId: dfa
 directories:
-    output: build
+    output: build/${platform}/${arch}
 files:
     - "dist/"
     - "!dist/stats"
 linux:
-    icon: src/assets/images/icons
+    icon: src/assets/images/icons/app
     description: DFA Input Acceptance Checker Machine Educational Project
     executableName: dfa
     synopsis: DFA Input Acceptance Checker Machine Educational Project
@@ -17,19 +17,22 @@ linux:
             arch:
                 - x64
                 - ia32
-        #         - arm64
-        # - 
-        #     target: rpm
-        #     arch:
-        #         - x64
-        #         - ia32
-        #         - arm64
-        # - 
-        #     target: apk
-        #     arch:
-        #         - x64
-        #         - ia32
-        #         - arm64
+        - 
+            target: rpm
+            arch:
+                - x64
+                - ia32
+        - 
+            target: tar.gz
+            arch:
+                - x64
+                - ia32
+        - 
+            target: apk
+            arch:
+                - x64
+                - ia32
+                - arm64
 win:
     icon: src/assets/images/icons/app/app.ico
     target:
