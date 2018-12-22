@@ -1,0 +1,7 @@
+.error-container {
+    color: map-get($colors, visualizer-error-text-color);
+
+    .error-message {
+        // text-shadow: text-stroke($width: 1px, $color: transparentize(darken(map-get($colors, visualizer-error-text-color), 15%), 0.6), $blur: 2px);
+    }
+}

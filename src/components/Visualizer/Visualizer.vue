@@ -12,5 +12,7 @@ div
 
 <script src="./visualizer.js"></script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+@import "../_shared/styles/main.scss";
+@import "./onerror.scss";
 </style>
