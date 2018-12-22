@@ -138,6 +138,11 @@ module.exports = merge(common, {
       }
     ]
   },
+  resolve: {
+    alias: {
+      vue: 'vue/dist/vue.min'
+    }
+  },
   optimization: {
     runtimeChunk: 'single',
     minimize: false,
