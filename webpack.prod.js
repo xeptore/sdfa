@@ -126,6 +126,15 @@ module.exports = merge(common, {
       {
         test: /\.pug$/,
         loader: 'pug-plain-loader'
+      },
+      {
+        test: /\.html$/,
+        include: [
+          path.join(__dirname, 'src', 'components', 'Visualizer')
+        ],
+        use: {
+          loader: 'html-loader'
+        }
       }
     ]
   },
