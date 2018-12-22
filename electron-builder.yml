@@ -35,11 +35,13 @@ win:
     target:
         - 
             target: nsis
-            oneClick: false
-            installerIcon: src/assets/images/icons/installer/installer.ico
-            uninstallerIcon: src/assets/images/icons/uninstaller/uninstaller.ico
-            perMachine: false
-            allowToChangeInstallationDirectory: true
             arch:
                 - x64
                 - ia32
+
+nsis:
+    oneClick: false
+    installerIcon: src/assets/images/icons/installer/installer.ico
+    uninstallerIcon: src/assets/images/icons/uninstaller/uninstaller.ico
+    perMachine: false
+    allowToChangeInstallationDirectory: true
