@@ -28,8 +28,6 @@
 
             background-color: map-get(map-get(map-get($colors, modal), button), background);
             @include box-glow($offset: 1px, $blur: 10px, $color: #999999);
-            @extend .p-3;
-            @extend .px-4;
         }
     }
 }
