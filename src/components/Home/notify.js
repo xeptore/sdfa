@@ -27,8 +27,8 @@ modal.setContent(
 )
 
 modal.addFooterBtn(
-  '<p dir="rtl" class="m-0 text-fa">باشه!</p>',
-  'rounded tingle-btn tingle-btn--primary p-3 px-4 text-fa',
+  '<p dir="rtl" class="m-0 py-1 text-fa">باشه!</p>',
+  'rounded tingle-btn tingle-btn--primary py-2 text-fa',
   function () {
     modal.close()
   }
