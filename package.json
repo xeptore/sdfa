@@ -6,13 +6,13 @@
   },
   "version": "1.0.1",
   "description": "dfa machine checks acceptance of user inputs",
-  "main": "electron.js",
+  "main": "dist/electron.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "webpack --watch",
     "start": "webpack-dev-server --config=webpack.dev.js",
     "app": "electron .",
-    "build": "NODE_ENV=production webpack --config=webpack.prod.js --mode=production && sed '1d' -i dist/*.js && rm -r dist/*.LICENSE",
+    "build": "NODE_ENV=production webpack --config=webpack.prod.js --mode=production && sed -i '/ For license information please see/ d' dist/*.js && rm -r dist/*.LICENSE",
     "dist": "electron-builder -l"
   },
   "repository": "git@gitlab.com:xeptore/sdfa.git",
