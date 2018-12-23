@@ -3,5 +3,6 @@
     "eslint.autoFixOnSave": true,
     "npm.packageManager": "yarn",
     "sasslint.packageManager": "yarn",
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2
 }
