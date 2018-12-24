@@ -11,28 +11,7 @@ linux:
     executableName: dfa
     synopsis: DFA Input Acceptance Checker Machine Educational Project
     category: Educational
-    target:
-        - 
-            target: deb
-            arch:
-                - x64
-                - ia32
-        - 
-            target: rpm
-            arch:
-                - x64
-                - ia32
-        - 
-            target: tar.gz
-            arch:
-                - x64
-                - ia32
-        - 
-            target: apk
-            arch:
-                - x64
-                - ia32
-                - arm64
+
 win:
     icon: src/assets/images/icons/app/app.ico
     target:
