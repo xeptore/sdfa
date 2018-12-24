@@ -4,5 +4,6 @@
     "npm.packageManager": "yarn",
     "sasslint.packageManager": "yarn",
     "editor.formatOnSave": true,
-    "editor.tabSize": 2
+    "editor.tabSize": 2,
+    "editor.wordWrap": "on"
 }
