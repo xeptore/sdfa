@@ -22,6 +22,9 @@ electronBuilder.build({
   }
 }).then(result => {
   console.log(colors.green(`sucessfully built at: ${result[1]}`))
+}).catch(error => {
+  console.error(colors.red('unable to build windows x64'))
+  console.error(colors.gray(error))
 })
 
 electronBuilder.build({
@@ -32,4 +35,7 @@ electronBuilder.build({
   }
 }).then(result => {
   console.log(colors.green(`sucessfully built at: ${result[1]}`))
+}).catch(error => {
+  console.error(colors.red('unable to build windows ias32'))
+  console.error(colors.gray(error))
 })
