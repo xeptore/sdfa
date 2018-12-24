@@ -6,7 +6,7 @@
   },
   "version": "1.0.3",
   "description": "dfa machine checks acceptance of user inputs",
-  "main": "dist/electron.js",
+  "main": "src/electron.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "webpack --watch",
@@ -28,6 +28,7 @@
     "@fortawesome/fontawesome-free": "^5.6.3",
     "@types/javascript-state-machine": "^2.4.1",
     "asar": "^0.14.6",
+    "async": "^2.6.1",
     "autoprefixer": "^9.3.1",
     "babel-loader": "^8.0.4",
     "bootstrap": "^4.2.1",
