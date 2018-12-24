@@ -11,7 +11,7 @@ div
 
 <script src="./About.js"></script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import "../_shared/styles/main.scss";
 @import "./styles/style.scss";
 </style>
