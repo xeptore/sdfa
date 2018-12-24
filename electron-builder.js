@@ -1,9 +1,10 @@
 'use strict'
 
+const { waterfall } = require('async')
 const colors = require('colors')
 const { safeLoad } = require('js-yaml')
 const { readFileSync, writeFileSync } = require('fs')
-const { join } = require('path')
+const { join, resolve } = require('path')
 const electronBuilder = require('electron-builder')
 const Platform = electronBuilder.Platform
 
@@ -14,118 +15,152 @@ try {
   console.error(colors.red('error parsing configuration file'))
 }
 
+function successfulBuild (platform, type, arch, path) {
+  console.log(colors.green(`\n\tsuccessfully built ${platform}-${type}-${arch} at: ${path}\n`))
+}
+
+function onError (error, platform, type, arch) {
+  console.error(colors.red(`Unable to build`))
+  console.error(colors.red(`\tPlatform: ${platform}`))
+  console.error(colors.red(`\tType: ${type}`))
+  console.error(colors.red(`\tArch: ${arch}`))
+  const errorLogFile = `error.${platform}-${type}-${arch}.log`
+  writeFileSync(errorLogFile, error)
+  console.error(colors.red(`A complete log can be found in:\n\t${resolve(errorLogFile)}`))
+}
+
 if (process.platform === 'linux') {
-  electronBuilder.build({
-    targets: Platform.LINUX.createTarget('deb', electronBuilder.Arch.x64),
-    config: {
-      icon: configuration.linux.icon
+  waterfall([
+    cb => {
+      electronBuilder.build({
+        targets: Platform.LINUX.createTarget('deb', electronBuilder.Arch.x64),
+        config: {
+          icon: configuration.linux.icon
+        }
+      })
+        .then(result => {
+          successfulBuild('linux', 'deb', 'x64', result[0])
+          cb(null)
+        })
+        .catch(err => {
+          cb(err, 'linux', 'deb', 'x64')
+        })
+    },
+    cb => {
+      electronBuilder.build({
+        targets: Platform.LINUX.createTarget('deb', electronBuilder.Arch.ia32),
+        config: {
+          icon: configuration.linux.icon
+        }
+      })
+        .then(result => {
+          successfulBuild('linux', 'deb', 'ia32', result[0])
+          cb(null)
+        })
+        .catch(err => {
+          cb(err, 'linux', 'deb', 'ia32')
+        })
+    },
+    cb => {
+      electronBuilder.build({
+        targets: Platform.LINUX.createTarget('rpm', electronBuilder.Arch.x64),
+        config: {
+          icon: configuration.linux.icon
+        }
+      })
+        .then(result => {
+          successfulBuild('linux', 'rpm', 'x64', result[0])
+          cb(null)
+        })
+        .catch(err => {
+          cb(err, 'linux', 'rpm', 'x64')
+        })
+    },
+    cb => {
+      electronBuilder.build({
+        targets: Platform.LINUX.createTarget('rpm', electronBuilder.Arch.ia32),
+        config: {
+          icon: configuration.linux.icon
+        }
+      })
+        .then(result => {
+          successfulBuild('linux', 'rpm', 'ia32', result[0])
+          cb(null)
+        })
+        .catch(err => {
+          cb(err, 'linux', 'rpm', 'ia32')
+        })
+    },
+    cb => {
+      electronBuilder.build({
+        targets: Platform.LINUX.createTarget('tar.gz', electronBuilder.Arch.x64),
+        config: {
+          icon: configuration.linux.icon
+        }
+      })
+        .then(result => {
+          successfulBuild('linux', 'tar.gz', 'x64', result[0])
+          cb(null)
+        })
+        .catch(err => {
+          cb(err, 'linux', 'tar.gz', 'x64')
+        })
+    },
+    cb => {
+      electronBuilder.build({
+        targets: Platform.LINUX.createTarget('tar.gz', electronBuilder.Arch.ia32),
+        config: {
+          icon: configuration.linux.icon
+        }
+      })
+        .then(result => {
+          successfulBuild('linux', 'tar.gz', 'ia32', result[0])
+          cb(null)
+        })
+        .catch(err => {
+          cb(err, 'linux', 'tar.gz', 'ia32')
+        })
     }
-  }).then(result => {
-    console.log(colors.green(`sucessfully built at: ${result[1]}`))
-  }).catch(error => {
-    console.error(colors.red('unable to build linux deb x64'))
-    const errFile = 'error.linux-deb-x64.log'
-    writeFileSync(errFile, error)
-    console.error(colors.red(`error log in ${errFile}`))
+  ], (error, platform, type, arch) => {
+    onError(error, platform, type, arch)
   })
+}
 
-  electronBuilder.build({
-    targets: Platform.LINUX.createTarget('deb', electronBuilder.Arch.ia32),
-    config: {
-      icon: configuration.linux.icon
+if (process.platform === 'win32') {
+  waterfall([
+    cb => {
+      electronBuilder.build({
+        targets: Platform.WINDOWS.createTarget('nsis', electronBuilder.Arch.x64),
+        config: {
+          icon: configuration.win.icon,
+          nsis: configuration.nsis
+        }
+      })
+        .then(result => {
+          successfulBuild('win', 'nsis', 'x64', result[0])
+          cb(null)
+        })
+        .catch(err => {
+          cb(err, 'win', 'nsis', 'x64')
+        })
+    },
+    cb => {
+      electronBuilder.build({
+        targets: Platform.WINDOWS.createTarget('nsis', electronBuilder.Arch.ia32),
+        config: {
+          icon: configuration.win.icon,
+          nsis: configuration.nsis
+        }
+      })
+        .then(result => {
+          successfulBuild('win', 'nsis', 'ia32', result[0])
+          cb(null)
+        })
+        .catch(err => {
+          cb(err, 'win', 'nsis', 'ia32')
+        })
     }
-  }).then(result => {
-    console.log(colors.green(`sucessfully built at: ${result[1]}`))
-  }).catch(error => {
-    console.error(colors.red('unable to build linux deb ia32'))
-    const errFile = 'error.linux-deb-ia32.log'
-    writeFileSync(errFile, error)
-    console.error(colors.red(`error log in ${errFile}`))
-  })
-
-  electronBuilder.build({
-    targets: Platform.LINUX.createTarget('rpm', electronBuilder.Arch.x64),
-    config: {
-      icon: configuration.linux.icon
-    }
-  }).then(result => {
-    console.log(colors.green(`sucessfully built at: ${result[1]}`))
-  }).catch(error => {
-    console.error(colors.red('unable to build linux rpm x64'))
-    const errFile = 'error.linux-rpm-x64.log'
-    writeFileSync(errFile, error)
-    console.error(colors.red(`error log in ${errFile}`))
-  })
-
-  electronBuilder.build({
-    targets: Platform.LINUX.createTarget('rpm', electronBuilder.Arch.ia32),
-    config: {
-      icon: configuration.linux.icon
-    }
-  }).then(result => {
-    console.log(colors.green(`sucessfully built at: ${result[1]}`))
-  }).catch(error => {
-    console.error(colors.red('unable to build linux rpm ia32'))
-    const errFile = 'error.linux-rpm-ia32.log'
-    writeFileSync(errFile, error)
-    console.error(colors.red(`error log in ${errFile}`))
-  })
-
-  electronBuilder.build({
-    targets: Platform.LINUX.createTarget('tar.gz', electronBuilder.Arch.x64),
-    config: {
-      icon: configuration.linux.icon
-    }
-  }).then(result => {
-    console.log(colors.green(`sucessfully built at: ${result[1]}`))
-  }).catch(error => {
-    console.error(colors.red('unable to build linux tar.gz x64'))
-    const errFile = 'error.linux-tar.gz-x64.log'
-    writeFileSync(errFile, error)
-    console.error(colors.red(`error log in ${errFile}`))
-  })
-
-  electronBuilder.build({
-    targets: Platform.LINUX.createTarget('tar.gz', electronBuilder.Arch.ia32),
-    config: {
-      icon: configuration.linux.icon
-    }
-  }).then(result => {
-    console.log(colors.green(`sucessfully built at: ${result[1]}`))
-  }).catch(error => {
-    console.error(colors.red('unable to build linux tar.gz ia32'))
-    const errFile = 'error.linux-tar.gz-ia32.log'
-    writeFileSync(errFile, error)
-    console.error(colors.red(`error log in ${errFile}`))
-  })
-} else if (process.platform === 'win32') {
-  electronBuilder.build({
-    targets: Platform.WINDOWS.createTarget('nsis', electronBuilder.Arch.x64),
-    config: {
-      icon: configuration.win.icon,
-      nsis: configuration.nsis
-    }
-  }).then(result => {
-    console.log(colors.green(`sucessfully built at: ${result[1]}`))
-  }).catch(error => {
-    console.error(colors.red('unable to build windows x64'))
-    const errFile = 'error.win32-x64.log'
-    writeFileSync(errFile, error)
-    console.error(colors.red(`error log in ${errFile}`))
-  })
-
-  electronBuilder.build({
-    targets: Platform.WINDOWS.createTarget('nsis', electronBuilder.Arch.ia32),
-    config: {
-      icon: configuration.win.icon,
-      nsis: configuration.nsis
-    }
-  }).then(result => {
-    console.log(colors.green(`sucessfully built at: ${result[1]}`))
-  }).catch(error => {
-    console.error(colors.red('unable to build windows ia32'))
-    const errFile = 'error.win32-ia32.log'
-    writeFileSync(errFile, error)
-    console.error(colors.red(`error log in ${errFile}`))
+  ], (error, platform, type, arch) => {
+    onError(error, platform, type, arch)
   })
 }
