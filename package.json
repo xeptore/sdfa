@@ -48,7 +48,6 @@
     "eslint-plugin-node": "^8.0.0",
     "eslint-plugin-promise": "^4.0.1",
     "eslint-plugin-standard": "^4.0.0",
-    "express": "^4.16.4",
     "extract-loader": "^3.1.0",
     "file-loader": "^3.0.1",
     "graphlib-dot": "^0.6.2",
