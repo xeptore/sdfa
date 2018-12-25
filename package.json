@@ -6,7 +6,7 @@
   },
   "version": "1.0.3",
   "description": "dfa machine checks acceptance of user inputs",
-  "main": "src/electron.js",
+  "main": "dist/electron.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "webpack --watch",
