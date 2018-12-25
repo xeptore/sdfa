@@ -17,6 +17,8 @@ import {
   Notify
 } from './notify'
 
+import { isValid } from './dfa'
+
 function readAndParseFile (path, $router) {
   const stats = statSync(path)
   if (stats && stats.size >= 1000000) {
@@ -35,6 +37,12 @@ function readAndParseFile (path, $router) {
     return false
   }
   Globals.DFA = parser.Parse()
+  if (!isValid(Globals.DFA)) {
+    const notify = new Notify()
+    notify.setContent('ماشین از نوع DFA نیست.')
+    notify.open()
+    return
+  }
   $router.push({
     path: '/form'
   })
