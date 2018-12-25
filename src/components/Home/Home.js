@@ -5,7 +5,8 @@ import {
   remote
 } from 'electron'
 import {
-  readFileSync
+  readFileSync,
+  statSync
 } from 'fs'
 import {
   Parser
@@ -13,15 +14,24 @@ import {
 import Globals from '../../globals'
 
 import {
-  modal
+  Notify
 } from './notify'
 
 function readAndParseFile (path, $router) {
+  const stats = statSync(path)
+  if (stats && stats.size >= 1000000) {
+    const notify = new Notify()
+    notify.setContent('حجم فایل ورودی خیلی زیاده!')
+    notify.open()
+    return
+  }
   const data = readFileSync(path, 'utf8')
   const parser = new Parser(data)
   if (!parser.IsValid()) {
     console.error('invalid file')
-    modal.open()
+    const notify = new Notify()
+    notify.setContent('فایل وروردی معتبر نیست.')
+    notify.open()
     return false
   }
   Globals.DFA = parser.Parse()
@@ -40,12 +50,16 @@ export default {
     uploadButtonClicked: function (e) {
       const files = remote.dialog.showOpenDialog({
         properties: ['openFile'],
+        title: 'Select Your File',
         filters: [{
-          name: 'texts',
-          extensions: 'txt'
+          extensions: ['txt'],
+          name: 'dfa'
         }]
       }) || []
-      if (files.length !== 1) {
+      if (files.length !== 1 && files[0].type === 'text/plain') {
+        const notify = new Notify()
+        notify.setContent('فایل وروردی معتبر نیست.')
+        notify.open()
         return false
       }
       readAndParseFile(files[0], this.$router)
