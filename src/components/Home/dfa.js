@@ -1,3 +1,5 @@
+import { uniq, toArray } from 'lodash'
+
 export class DFA {
   constructor (initial, transitions, acceptings, alphabets, states) {
     this.Initial = initial
@@ -6,15 +8,13 @@ export class DFA {
     this.Alphabets = alphabets
     this.States = states
   }
+}
 
-  Accepts (input) {
-    let state = this.Initial
-    for (const ch of input) {
-      if (!this.Transitions.has(state) || !this.Transitions.get(state).has(ch)) {
-        return false
-      }
-      state = this.Transitions.get(state).get(ch)
+export function isValid (dfa) {
+  for (const [k, v] of dfa.Transitions.entries()) {
+    if (uniq(toArray(v.keys())).length !== dfa.Alphabets.length) {
+      return false
     }
-    return typeof state !== 'undefined' && this.Acceptings.map(es => String(es)).includes(state)
   }
+  return true
 }
