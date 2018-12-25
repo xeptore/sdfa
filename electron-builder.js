@@ -20,6 +20,9 @@ function successfulBuild (platform, type, arch, path) {
 }
 
 function onError (error, platform, type, arch) {
+  if (!error) {
+    return
+  }
   console.error(colors.red(`Unable to build`))
   console.error(colors.red(`\tPlatform: ${platform}`))
   console.error(colors.red(`\tType: ${type}`))
