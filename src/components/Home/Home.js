@@ -64,7 +64,7 @@ export default {
           name: 'dfa'
         }]
       }) || []
-      if (files.length !== 1 && files[0].type === 'text/plain') {
+      if (files.length !== 1 || files[0].type !== 'text/plain') {
         const notify = new Notify()
         notify.setContent('فایل وروردی معتبر نیست.')
         notify.open()
